@@ -17,7 +17,7 @@ public class c_Aritmatika {
         System.out.println("x + y = " + (x + y));
         System.out.println("x - y = " + (x - y));
         System.out.println("x * y = " + (x * y));
-        System.out.println("x / y = " + (double) x / y);
+        System.out.println("x / y = " + (float) x / y);
         System.out.println("x % y = " + (x % y));
 
     }

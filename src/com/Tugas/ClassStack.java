@@ -1,4 +1,4 @@
-package com.Proyek;
+package com.Tugas;
 
 import java.util.*;
 

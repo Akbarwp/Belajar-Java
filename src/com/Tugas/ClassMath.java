@@ -1,4 +1,4 @@
-package com.Proyek;
+package com.Tugas;
 
 public class ClassMath {
 

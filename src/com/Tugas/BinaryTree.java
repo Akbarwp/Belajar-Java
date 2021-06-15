@@ -1,9 +1,8 @@
-package com.Proyek;
+package com.Tugas;
 
-import java.io.*;
-import java.util.*;;
+import java.util.*;
 
-public class UTSSD {
+public class BinaryTree {
 
     /* Class untuk mengisi daun kanan dan kiri */
     class Node {
@@ -20,7 +19,7 @@ public class UTSSD {
     Node root;
 
     // Constructor
-    UTSSD() {
+    BinaryTree() {
         root = null;
     }
 
@@ -118,90 +117,22 @@ public class UTSSD {
     }
 
     // Test Program nya
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        UTSSD tree = new UTSSD();
+        BinaryTree tree = new BinaryTree();
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        String h = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        char[] hu = h.toCharArray();
-        int[][] nilai = new int[30][30];
-        int n = 1;
-
-        for (int j = 0; j < 26; j++) {
-
-            hu[j] = h.charAt(j);
-            nilai[0][j] = n;
-            n++;
-        }
-
-        String input, huruf2;
-        int pj;
-
-        System.out.print("Masukkan Nama Anda: ");
-        input = br.readLine();
-        huruf2 = input.toUpperCase();
-        char[] arrHuruf = huruf2.toCharArray();
-        pj = arrHuruf.length;
-
-        for (int i = 0; i < pj; i++) {
-
-            for (int k = 0; k < 26; k++) {
-
-                if (arrHuruf[i] == hu[k]) {
-
-                    nilai[1][i] = nilai[0][k];
-                }
-            }
-        }
-        System.out.println("");
-
-        System.out.println("Nama: " + huruf2);
-        System.out.println("Banyak huruf: " + pj);
-
-        for (int j = 0; j < pj; j++) {
-
-            System.out.println("Huruf " + arrHuruf[j] + " urutan ke-" + (j + 1) + " bernilai: " + nilai[1][j]);
-        }
-        System.out.println("");
-
-        System.out.print("Array Nama: {");
-        System.out.print(nilai[1][0] + ", ");
-        for (int d = 1; d < pj; d++) {
-
-            if ((d + 1) < pj) {
-
-                System.out.print(nilai[1][d] + ", ");
-            } else {
-
-                System.out.print(nilai[1][d] + "");
-            }
-        }
-        System.out.print("}");
-        System.out.println("");
-
-        int x = 0;
-
-        if (pj % 2 == 0) {
-
-            x = pj / 2 - 1;
-
-        } else if (pj % 2 == 1) {
-
-            x = pj / 2;
-        }
-
-        System.out.println("Key: " + nilai[1][x]);
-
-        System.out.println("");
-
-        tree.insert(nilai[1][x]);
-        for (int c = 0; c < pj; c++) {
-
-            tree.insert(nilai[1][c]);
-        }
-        System.out.println("");
+        /*
+         * Contoh kita ingin membuah tree sebagai berikut 60 / \ 20 70 / \ 10 40 / \ 30
+         * 50
+         * 
+         */
+        tree.insert(60);
+        tree.insert(20);
+        tree.insert(70);
+        tree.insert(10);
+        tree.insert(40);
+        tree.insert(30);
+        tree.insert(50);
 
         // Print hasil akhir nya
         System.out.println("Depth First Order (PreOrder): ");

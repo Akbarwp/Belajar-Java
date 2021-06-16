@@ -12,14 +12,50 @@ public class ClassStringBuffer {
         StringBuffer kata = new StringBuffer(scan.readLine());
         System.out.println();
 
-        pc(kata);
-        add(kata);
-        plus(kata);
-        hapus(kata);
-        hHuruf(kata);
-        ganti(kata);
-        balik(kata);
-        ensure(kata);
+        while (true) {
+
+            System.out.print("Masukkan pilihan menu: ");
+            int pilih = Integer.parseInt(scan.readLine());
+
+            switch (pilih) {
+
+                case 1:
+                    pc(kata);
+                    break;
+
+                case 2:
+                    add(kata);
+                    break;
+
+                case 3:
+                    plus(kata);
+                    break;
+
+                case 4:
+                    hapus(kata);
+                    break;
+
+                case 5:
+                    hHuruf(kata);
+                    break;
+
+                case 6:
+                    ganti(kata);
+                    break;
+
+                case 7:
+                    balik(kata);
+                    break;
+
+                case 8:
+                    ensure(kata);
+                    break;
+
+                case 9:
+                    System.exit(0);
+                    break;
+            }
+        }
 
     }
 

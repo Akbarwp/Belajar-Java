@@ -4,9 +4,9 @@ import java.io.*;
 
 public class ClassStringBuffer {
 
-    public static void main(String[] args) throws IOException {
+    public static BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
 
-        BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args) throws IOException {
 
         System.out.print("Masukkan kata: ");
         StringBuffer kata = new StringBuffer(scan.readLine());
@@ -36,8 +36,6 @@ public class ClassStringBuffer {
 
     private static void add(StringBuffer kata) throws IOException {
 
-        BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
-
         System.out.println("=====Append=====");
         System.out.print("Masukkan kata tambahan: ");
         kata.append(scan.readLine());
@@ -46,8 +44,6 @@ public class ClassStringBuffer {
     }
 
     private static void plus(StringBuffer kata) throws IOException {
-
-        BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("=====Insert=====");
         System.out.print("Masukkan index ke: ");
@@ -69,8 +65,6 @@ public class ClassStringBuffer {
 
     private static void hapus(StringBuffer kata) throws IOException {
 
-        BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
-
         System.out.println("=====Delete=====");
         System.out.print("Masukkan index awal: ");
         int x = Integer.parseInt(scan.readLine());
@@ -83,8 +77,6 @@ public class ClassStringBuffer {
 
     private static void hHuruf(StringBuffer kata) throws IOException {
 
-        BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
-
         System.out.println("=====DeleteCharAt=====");
         System.out.print("Masukkan index ke: ");
         kata.deleteCharAt(Integer.parseInt(scan.readLine()));
@@ -93,8 +85,6 @@ public class ClassStringBuffer {
     }
 
     private static void ganti(StringBuffer kata) throws IOException {
-
-        BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("=====Replace=====");
         System.out.print("Masukkan index awal: ");
@@ -109,8 +99,6 @@ public class ClassStringBuffer {
     }
 
     private static void ensure(StringBuffer kata) throws IOException {
-
-        BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("=====Ensure Capacity=====");
         System.out.print("Masukkan Min kapasitas: ");

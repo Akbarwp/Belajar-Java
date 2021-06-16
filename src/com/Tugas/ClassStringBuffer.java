@@ -14,8 +14,18 @@ public class ClassStringBuffer {
 
         while (true) {
 
+            System.out.println("1. Length & Capacity");
+            System.out.println("2. Append");
+            System.out.println("3. Insert");
+            System.out.println("4. Delete");
+            System.out.println("5. Delete CharAt");
+            System.out.println("6. Replace");
+            System.out.println("7. Reverse");
+            System.out.println("8. Ensure Capacity");
+            System.out.println("9. Exit");
             System.out.print("Masukkan pilihan menu: ");
             int pilih = Integer.parseInt(scan.readLine());
+            System.out.println();
 
             switch (pilih) {
 

@@ -4,9 +4,9 @@ import java.util.*;
 
 public class ClassString {
 
-    public static void main(String[] args) {
+    public static Scanner scan = new Scanner(System.in);
 
-        Scanner scan = new Scanner(System.in);
+    public static void main(String[] args) {
 
         System.out.print("Masukkan kata: ");
         String nama = scan.nextLine();
@@ -38,8 +38,6 @@ public class ClassString {
 
     private static void concat(String nama) {
 
-        Scanner scan = new Scanner(System.in);
-
         System.out.println("=====Concat=====");
         System.out.print("Masukkan kata: ");
         String kata = scan.nextLine();
@@ -48,8 +46,6 @@ public class ClassString {
     }
 
     private static void substr(String nama) {
-
-        Scanner scan = new Scanner(System.in);
 
         System.out.println("=====SubString=====");
         System.out.print("Masukkan awal: ");
@@ -61,8 +57,6 @@ public class ClassString {
     }
 
     private static void replace(String nama) {
-
-        Scanner scan = new Scanner(System.in);
 
         System.out.println("=====Replace=====");
         System.out.print("Masukkan kata lama: ");

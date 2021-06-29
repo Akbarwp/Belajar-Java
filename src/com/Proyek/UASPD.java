@@ -54,18 +54,7 @@ public class UASPD {
                 case 2:
 
                     n1();
-
-                    switch (pilih) {
-
-                        case 1:
-                            break;
-
-                        case 2:
-                            break;
-
-                        case 3:
-                            break;
-                    }
+                    dataBran();
                     break;
 
                 case 3:
@@ -150,8 +139,8 @@ public class UASPD {
 
         System.out.println("=====Menu=====");
         System.out.println("1. Data Pelanggan");
-        System.out.println("2. Data Perhiasan");
-        System.out.println("3. Data Brankas");
+        System.out.println("2. Data Brankas");
+        System.out.println("3. Data Perhiasan");
         System.out.println("4. Data Perawatan");
         System.out.println("5. Data Transaksi Penjualan");
         System.out.println("6. Data Transaksi Pembayaran");
@@ -176,14 +165,14 @@ public class UASPD {
             System.out.println("2. Update Data Pelanggan");
             System.out.println("3. Delete Data Pelanggan");
 
-        } else if (pilih == 2) {
+        } else if (pilih == 3) {
 
             System.out.println("=====Data Perhiasan=====");
             System.out.println("1. Entry Data Perhiasan");
             System.out.println("2. Update Data Perhiasan");
             System.out.println("3. Delete Data Perhiasan");
 
-        } else if (pilih == 3) {
+        } else if (pilih == 2) {
 
             System.out.println("=====Data Brankas=====");
             System.out.println("1. Entry Data Brankas");
@@ -276,6 +265,15 @@ public class UASPD {
                             IDPel.removeElementAt(i);
                             System.out.print("Diganti dengan: ");
                             S = scan.readLine();
+                            for (int j = 0; j < IDPel.size(); j++) {
+                                if (S.equalsIgnoreCase(IDPel.elementAt(j))) {
+                                    do {
+                                        System.out.println("ID sudah terdaftar ganti yang lain");
+                                        System.out.print("ID Pelanggan: ");
+                                        S = scan.readLine();
+                                    } while (S.equalsIgnoreCase(IDPel.elementAt(j)));
+                                }
+                            }
                             IDPel.insertElementAt(S, i);
                         }
                     }
@@ -387,5 +385,185 @@ public class UASPD {
                 break;
         }
 
+    }
+
+    private static void dataBran() throws IOException {
+
+        switch (pilih) {
+
+            case 1:
+
+                System.out.println("=====Entry Data Brankas=====");
+                System.out.println();
+
+                for (int i = 0; i < IDPel.size(); i++) {
+
+                    System.out.println("Data Brankas " + (i + 1));
+
+                    System.out.print("ID Brankas: ");
+                    String ID = scan.readLine();
+
+                    for (int j = 0; j < IDBran.size(); j++) {
+                        if (ID.equalsIgnoreCase(IDBran.elementAt(j))) {
+
+                            do {
+                                System.out.println("ID sudah terdaftar ganti yang lain");
+                                System.out.print("ID Brankas: ");
+                                ID = scan.readLine();
+                            } while (ID.equalsIgnoreCase(IDBran.elementAt(j)));
+                        }
+                    }
+                    IDBran.addElement(ID);
+
+                    System.out.print("Nama Brankas: ");
+                    nmBran.addElement(scan.readLine());
+                    System.out.print("Lokasi Brankas: ");
+                    lokasi.addElement(scan.readLine());
+                    System.out.print("Tanggal Penyimpanan: ");
+                    tglSimpan.addElement(scan.readLine());
+                    System.out.println();
+                }
+                break;
+
+            case 2:
+
+                System.out.println("=====Update Data Brankas=====");
+                System.out.println();
+
+                System.out.println("Data apa yang akan diganti: ");
+                System.out.println("ID/Nama/Lokasi/TglSimpan/Semua");
+                String ganti = scan.readLine();
+                String S;
+
+                if (ganti.equalsIgnoreCase("ID")) {
+
+                    System.out.print("ID Brankas: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDBran.size(); i++) {
+
+                        if (S.equalsIgnoreCase(IDBran.elementAt(i))) {
+
+                            IDBran.removeElementAt(i);
+                            System.out.print("Diganti dengan: ");
+                            S = scan.readLine();
+                            for (int j = 0; j < IDBran.size(); j++) {
+                                if (S.equalsIgnoreCase(IDBran.elementAt(j))) {
+                                    do {
+                                        System.out.println("ID sudah terdaftar ganti yang lain");
+                                        System.out.print("ID IDBran: ");
+                                        S = scan.readLine();
+                                    } while (S.equalsIgnoreCase(IDBran.elementAt(j)));
+                                }
+                            }
+                            IDBran.insertElementAt(S, i);
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Nama")) {
+
+                    System.out.print("Nama: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < nmBran.size(); i++) {
+                        if (S.equalsIgnoreCase(nmBran.elementAt(i))) {
+
+                            nmBran.removeElementAt(i);
+                            System.out.print("Diganti dengan: ");
+                            S = scan.readLine();
+                            nmBran.insertElementAt(S, i);
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Lokasi")) {
+
+                    System.out.print("Lokasi: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < lokasi.size(); i++) {
+                        if (S.equalsIgnoreCase(lokasi.elementAt(i))) {
+
+                            lokasi.removeElementAt(i);
+                            System.out.print("Diganti dengan: ");
+                            S = scan.readLine();
+                            lokasi.insertElementAt(S, i);
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("TglSimpan")) {
+
+                    System.out.print("Tanggal Penyimpanan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < tglSimpan.size(); i++) {
+                        if (S.equalsIgnoreCase(tglSimpan.elementAt(i))) {
+
+                            tglSimpan.removeElementAt(i);
+                            System.out.print("Diganti dengan: ");
+                            S = scan.readLine();
+                            tglSimpan.insertElementAt(S, i);
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Semua")) {
+
+                    System.out.print("ID Brankas: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDBran.size(); i++) {
+                        if (S.equalsIgnoreCase(IDBran.elementAt(i))) {
+
+                            IDBran.removeElementAt(i);
+                            nmBran.removeElementAt(i);
+                            lokasi.removeElementAt(i);
+                            tglSimpan.removeElementAt(i);
+                            System.out.println("===Ganti===");
+                            System.out.print("ID Brankas: ");
+                            IDBran.insertElementAt(scan.readLine(), i);
+                            System.out.print("Nama Brankas: ");
+                            nmBran.insertElementAt(scan.readLine(), i);
+                            System.out.print("Lokasi: ");
+                            lokasi.insertElementAt(scan.readLine(), i);
+                            System.out.print("Tanggal Penyimpanan: ");
+                            tglSimpan.insertElementAt(scan.readLine(), i);
+                        }
+                    }
+                }
+                System.out.println();
+                break;
+
+            case 3:
+
+                System.out.println("=====Delete Data Brankas=====");
+                System.out.println();
+
+                if (IDBran.isEmpty()) {
+                    System.out.println("Data Kosong");
+
+                } else {
+                    System.out.print("ID Brankas: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDBran.size(); i++) {
+                        if (S.equalsIgnoreCase(IDBran.elementAt(i))) {
+
+                            IDBran.removeElementAt(i);
+                            nmBran.removeElementAt(i);
+                            lokasi.removeElementAt(i);
+                            tglSimpan.removeElementAt(i);
+                        }
+                    }
+                    System.out.println("Data telah dihapus");
+                }
+                System.out.println();
+                break;
+
+            case 4:
+
+                for (int i = 0; i < IDBran.size(); i++) {
+
+                    System.out.println("Data Brankas " + (i + 1));
+                    System.out.println("ID Brankas: " + IDBran.elementAt(i));
+                    System.out.println("Nama Brankas: " + nmBran.elementAt(i));
+                    System.out.println("Lokasi: " + lokasi.elementAt(i));
+                    System.out.println("Tanggal Penyimpanan: " + tglSimpan.elementAt(i));
+                    System.out.println();
+                }
+                break;
+        }
     }
 }

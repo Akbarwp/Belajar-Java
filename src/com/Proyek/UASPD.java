@@ -37,6 +37,7 @@ public class UASPD {
     public static Vector<Integer> kembalian = new Vector<Integer>();
 
     public static int pilih;
+    public static String S;
 
     public static void main(String[] args) throws IOException {
 
@@ -220,7 +221,6 @@ public class UASPD {
                 System.out.println("Data apa yang akan diganti: ");
                 System.out.print("ID/Nama/Alamat/Telepon/Semua? ");
                 String ganti = scan.readLine();
-                String S;
 
                 if (ganti.equalsIgnoreCase("ID")) {
 
@@ -401,7 +401,6 @@ public class UASPD {
                 System.out.println("Data apa yang akan diganti: ");
                 System.out.print("ID/Nama/Lokasi/TglSimpan/Semua? ");
                 String ganti = scan.readLine();
-                String S;
 
                 if (ganti.equalsIgnoreCase("ID")) {
 
@@ -566,7 +565,6 @@ public class UASPD {
                 System.out.println("Data apa yang akan diganti: ");
                 System.out.print("ID/Jenis/Bahan/Semua? ");
                 String ganti = scan.readLine();
-                String S;
 
                 if (ganti.equalsIgnoreCase("ID")) {
 
@@ -711,7 +709,6 @@ public class UASPD {
                 System.out.println("Data apa yang akan diganti: ");
                 System.out.print("ID/Jenis/Semua? ");
                 String ganti = scan.readLine();
-                String S;
 
                 if (ganti.equalsIgnoreCase("ID")) {
 
@@ -817,7 +814,7 @@ public class UASPD {
                 System.out.println();
 
                 System.out.print("Masukkan ID Pelanggan: ");
-                String S = scan.readLine();
+                S = scan.readLine();
                 for (int i = 0; i < IDPel.size(); i++) {
                     if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
 
@@ -908,19 +905,25 @@ public class UASPD {
                 System.out.println("=====Delete Data Transaksi Penyimpanan=====");
                 System.out.println();
 
-                System.out.print("Masukkan ID Pelanggan: ");
-                S = scan.readLine();
-                for (int i = 0; i < IDPel.size(); i++) {
-                    if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+                if (IDPera.isEmpty()) {
+                    System.out.println("Data Kosong");
 
-                        berPerhi.removeElementAt(i);
-                        lama.removeElementAt(i);
-                        totAwal.removeElementAt(i);
-                        diskon.removeElementAt(i);
-                        diskonRp.removeElementAt(i);
-                        totAkhir.removeElementAt(i);
+                } else {
+
+                    System.out.print("Masukkan ID Pelanggan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+
+                            berPerhi.removeElementAt(i);
+                            lama.removeElementAt(i);
+                            totAwal.removeElementAt(i);
+                            diskon.removeElementAt(i);
+                            diskonRp.removeElementAt(i);
+                            totAkhir.removeElementAt(i);
+                        }
+                        System.out.println("Data telah dihapus");
                     }
-                    System.out.println("Data telah dihapus");
                 }
                 System.out.println();
                 break;
@@ -945,73 +948,79 @@ public class UASPD {
                     System.out.println("Diskon: " + diskon.elementAt(i) + "%");
                     System.out.println("Diskon(Rp): Rp" + diskonRp.elementAt(i));
                     System.out.println("Total Akhir: Rp" + totAkhir.elementAt(i));
-
+                    System.out.println();
                 }
-                System.out.println();
                 break;
         }
     }
 
-    private static void biayaAwal() throws IOException {
+    private static int biayaAwal() throws IOException {
 
         for (int i = 0; i < IDPel.size(); i++) {
+            if (IDPel.elementAt(i).equalsIgnoreCase(S)) {
 
-            if (bahPerhi.elementAt(i).equalsIgnoreCase("Emas")) {
+                if (bahPerhi.elementAt(i).equalsIgnoreCase("Emas")) {
 
-                totAwal.addElement(30000);
+                    totAwal.addElement(30000);
 
-            } else {
+                } else {
 
-                totAwal.addElement(20000);
+                    totAwal.addElement(20000);
+                }
+                diskon.addElement(0);
+                diskonRp.addElement(0);
+                totAkhir.addElement(0);
             }
-            diskon.addElement(0);
-            diskonRp.addElement(0);
-            totAkhir.addElement(0);
         }
+        return 0;
     }
 
-    private static void biaya() throws IOException {
+    private static int biaya() throws IOException {
 
         for (int i = 0; i < IDPel.size(); i++) {
 
-            if (berPerhi.elementAt(i) < 20) {
+            if (IDPel.elementAt(i).equalsIgnoreCase(S)) {
 
-                totAwal.set(i, totAwal.elementAt(i) + 10000);
+                if (berPerhi.elementAt(i) < 20) {
 
-            } else if (berPerhi.elementAt(i) > 20 && berPerhi.elementAt(i) < 50) {
+                    totAwal.set(i, totAwal.elementAt(i) + 10000);
 
-                totAwal.set(i, totAwal.elementAt(i) + 20000);
+                } else if (berPerhi.elementAt(i) >= 20 && berPerhi.elementAt(i) < 50) {
 
-            } else if (berPerhi.elementAt(i) > 50) {
+                    totAwal.set(i, totAwal.elementAt(i) + 20000);
 
-                totAwal.set(i, totAwal.elementAt(i) + 30000);
+                } else if (berPerhi.elementAt(i) >= 50) {
 
-            }
+                    totAwal.set(i, totAwal.elementAt(i) + 30000);
 
-            // Biaya Lainnya
-            totAwal.set(i, totAwal.elementAt(i) + 50000);
-            // Biaya Lama Simpan
-            totAwal.set(i, totAwal.elementAt(i) * lama.elementAt(i));
+                }
 
-            // Diskon
-            if (totAwal.elementAt(i) < 200000) {
+                // Biaya Lainnya
+                totAwal.set(i, totAwal.elementAt(i) + 50000);
+                // Biaya Lama Simpan
+                totAwal.set(i, totAwal.elementAt(i) * lama.elementAt(i));
 
-                diskon.set(i, 10);
-                diskonRp.set(i, diskon.elementAt(i) * totAwal.elementAt(i) / 100);
-                totAkhir.set(i, totAwal.elementAt(i) - diskonRp.elementAt(i));
+                // Diskon
+                if (totAwal.elementAt(i) < 200000) {
 
-            } else if (totAwal.elementAt(i) > 200000 && totAwal.elementAt(i) < 300000) {
+                    diskon.set(i, 10);
+                    diskonRp.set(i, diskon.elementAt(i) * totAwal.elementAt(i) / 100);
+                    totAkhir.set(i, totAwal.elementAt(i) - diskonRp.elementAt(i));
 
-                diskon.set(i, 20);
-                diskonRp.set(i, diskon.elementAt(i) * totAwal.elementAt(i) / 100);
-                totAkhir.set(i, totAwal.elementAt(i) - diskonRp.elementAt(i));
+                } else if (totAwal.elementAt(i) >= 200000 && totAwal.elementAt(i) < 600000) {
 
-            } else if (totAwal.elementAt(i) > 600000) {
+                    diskon.set(i, 20);
+                    diskonRp.set(i, diskon.elementAt(i) * totAwal.elementAt(i) / 100);
+                    totAkhir.set(i, totAwal.elementAt(i) - diskonRp.elementAt(i));
 
-                diskon.set(i, 30);
-                diskonRp.set(i, diskon.elementAt(i) * totAwal.elementAt(i) / 100);
-                totAkhir.set(i, totAwal.elementAt(i) - diskonRp.elementAt(i));
+                } else if (totAwal.elementAt(i) >= 600000) {
+
+                    diskon.set(i, 30);
+                    diskonRp.set(i, diskon.elementAt(i) * totAwal.elementAt(i) / 100);
+                    totAkhir.set(i, totAwal.elementAt(i) - diskonRp.elementAt(i));
+                }
             }
         }
+        return 0;
     }
 }

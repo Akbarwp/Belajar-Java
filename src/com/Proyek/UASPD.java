@@ -836,28 +836,123 @@ public class UASPD {
                         System.out.print("Lama Simpan(tahun): ");
                         lama.addElement(Integer.parseInt(scan.readLine()));
 
-                        biayaBahan();
+                        biayaAwal();
+                        biaya();
                         System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
                         System.out.println("Diskon: " + diskon.elementAt(i) + "%");
                         System.out.println("Diskon(Rp): Rp" + diskonRp.elementAt(i));
                         System.out.println("Total Akhir: Rp" + totAkhir.elementAt(i));
                     }
                 }
+                System.out.println();
                 break;
 
             case 2:
                 System.out.println("=====Update Data Transaksi Penyimpanan=====");
+                System.out.println();
+
+                System.out.println("Data apa yang akan diganti: ");
+                System.out.print("Berat/Lama Simpan/Semua? ");
+                String ganti = scan.readLine();
+
+                if (ganti.equalsIgnoreCase("Berat")) {
+
+                    System.out.print("ID Perhiasan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPerhi.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
+
+                            System.out.print("Diganti dengan: ");
+                            int A = Integer.parseInt(scan.readLine());
+                            berPerhi.set(i, A);
+                            biaya();
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Lama Simpan")) {
+
+                    System.out.print("ID Perhiasan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPerhi.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
+
+                            System.out.print("Diganti dengan: ");
+                            int A = Integer.parseInt(scan.readLine());
+                            lama.set(i, A);
+                            biaya();
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Semua")) {
+
+                    System.out.print("ID Perhiasan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPerhi.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
+
+                            System.out.println("===Ganti===");
+                            System.out.print("Berat Perhiasan(gram): ");
+                            int A = Integer.parseInt(scan.readLine());
+                            berPerhi.set(i, A);
+                            System.out.print("Lama Simpan(tahun): ");
+                            int B = Integer.parseInt(scan.readLine());
+                            lama.set(i, B);
+                            biaya();
+                        }
+                    }
+                }
                 System.out.println();
                 break;
 
             case 3:
                 System.out.println("=====Delete Data Transaksi Penyimpanan=====");
                 System.out.println();
+
+                System.out.print("Masukkan ID Pelanggan: ");
+                S = scan.readLine();
+                for (int i = 0; i < IDPel.size(); i++) {
+                    if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+
+                        berPerhi.removeElementAt(i);
+                        lama.removeElementAt(i);
+                        totAwal.removeElementAt(i);
+                        diskon.removeElementAt(i);
+                        diskonRp.removeElementAt(i);
+                        totAkhir.removeElementAt(i);
+                    }
+                    System.out.println("Data telah dihapus");
+                }
+                System.out.println();
+                break;
+
+            case 4:
+
+                for (int i = 0; i < IDPel.size(); i++) {
+
+                    System.out.println("Daftar Penyimpanan Pelanggan: " + (i + 1));
+                    System.out.println("ID Pelanggan: " + IDPel.elementAt(i));
+                    System.out.println("Nama: " + nmPel.elementAt(i));
+                    System.out.println("Alamat: " + almt.elementAt(i));
+                    System.out.println("Nomor Telepon: " + telp.elementAt(i));
+                    System.out.println("ID Perhiasan: " + IDPerhi.elementAt(i));
+                    System.out.println("Jenis Perhiasan: " + jenPerhi.elementAt(i));
+                    System.out.println("Bahan Perhiasan: " + bahPerhi.elementAt(i));
+
+                    System.out.println("Berat Pehiasan(gram): " + berPerhi.elementAt(i) + " gram");
+                    System.out.println("Lama Simpan(tahun): " + lama.elementAt(i) + " tahun");
+
+                    System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
+                    System.out.println("Diskon: " + diskon.elementAt(i) + "%");
+                    System.out.println("Diskon(Rp): Rp" + diskonRp.elementAt(i));
+                    System.out.println("Total Akhir: Rp" + totAkhir.elementAt(i));
+
+                }
+                System.out.println();
                 break;
         }
     }
 
-    private static void biayaBahan() throws IOException {
+    private static void biayaAwal() throws IOException {
 
         for (int i = 0; i < IDPel.size(); i++) {
 
@@ -869,6 +964,29 @@ public class UASPD {
 
                 totAwal.addElement(20000);
             }
+            diskon.addElement(0);
+            diskonRp.addElement(0);
+            totAkhir.addElement(0);
+        }
+    }
+
+    private static void biaya() throws IOException {
+
+        for (int i = 0; i < IDPel.size(); i++) {
+
+            if (berPerhi.elementAt(i) < 20) {
+
+                totAwal.set(i, totAwal.elementAt(i) + 10000);
+
+            } else if (berPerhi.elementAt(i) > 20 && berPerhi.elementAt(i) < 50) {
+
+                totAwal.set(i, totAwal.elementAt(i) + 20000);
+
+            } else if (berPerhi.elementAt(i) > 50) {
+
+                totAwal.set(i, totAwal.elementAt(i) + 30000);
+
+            }
 
             // Biaya Lainnya
             totAwal.set(i, totAwal.elementAt(i) + 50000);
@@ -876,23 +994,23 @@ public class UASPD {
             totAwal.set(i, totAwal.elementAt(i) * lama.elementAt(i));
 
             // Diskon
-            if (totAwal.elementAt(i) < 150000) {
+            if (totAwal.elementAt(i) < 200000) {
 
-                diskon.addElement(10);
-                diskonRp.addElement(diskon.elementAt(i) * totAwal.elementAt(i) / 100);
-                totAkhir.addElement(totAwal.elementAt(i) - diskonRp.elementAt(i));
+                diskon.set(i, 10);
+                diskonRp.set(i, diskon.elementAt(i) * totAwal.elementAt(i) / 100);
+                totAkhir.set(i, totAwal.elementAt(i) - diskonRp.elementAt(i));
 
-            } else if (totAwal.elementAt(i) > 150000 && totAwal.elementAt(i) < 300000) {
+            } else if (totAwal.elementAt(i) > 200000 && totAwal.elementAt(i) < 300000) {
 
-                diskon.addElement(20);
-                diskonRp.addElement(diskon.elementAt(i) * totAwal.elementAt(i) / 100);
-                totAkhir.addElement(totAwal.elementAt(i) - diskonRp.elementAt(i));
+                diskon.set(i, 20);
+                diskonRp.set(i, diskon.elementAt(i) * totAwal.elementAt(i) / 100);
+                totAkhir.set(i, totAwal.elementAt(i) - diskonRp.elementAt(i));
 
             } else if (totAwal.elementAt(i) > 600000) {
 
-                diskon.addElement(30);
-                diskonRp.addElement(diskon.elementAt(i) * totAwal.elementAt(i) / 100);
-                totAkhir.addElement(totAwal.elementAt(i) - diskonRp.elementAt(i));
+                diskon.set(i, 30);
+                diskonRp.set(i, diskon.elementAt(i) * totAwal.elementAt(i) / 100);
+                totAkhir.set(i, totAwal.elementAt(i) - diskonRp.elementAt(i));
             }
         }
     }

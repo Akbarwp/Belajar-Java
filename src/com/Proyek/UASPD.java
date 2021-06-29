@@ -7,33 +7,34 @@ public class UASPD {
 
     public static BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
 
-    public static Vector<String> IDPel = new Vector();
-    public static Vector<String> nmPel = new Vector();
-    public static Vector<String> almt = new Vector();
-    public static Vector<String> telp = new Vector();
+    public static Vector<String> IDPel = new Vector<String>();
+    public static Vector<String> nmPel = new Vector<String>();
+    public static Vector<String> almt = new Vector<String>();
+    public static Vector<String> telp = new Vector<String>();
 
-    public static Vector<String> IDBran = new Vector();
-    public static Vector<String> nmBran = new Vector();
-    public static Vector<String> lokasi = new Vector();
-    public static Vector<String> tglSimpan = new Vector();
+    public static Vector<String> IDBran = new Vector<String>();
+    public static Vector<String> nmBran = new Vector<String>();
+    public static Vector<String> lokasi = new Vector<String>();
+    public static Vector<String> tglSimpan = new Vector<String>();
 
-    public static Vector<String> IDPerhi = new Vector();
-    public static Vector<String> jenPerhi = new Vector();
-    public static Vector<String> bahPerhi = new Vector();
-    public static Vector<Integer> berPerhi = new Vector();
-    public static Vector<Integer> totPerhi = new Vector();
-    public static Vector<Integer> lama = new Vector();
-    public static Vector<Integer> totAwal = new Vector();
-    public static Vector<Integer> diskon = new Vector();
-    public static Vector<Integer> diskonRp = new Vector();
-    public static Vector<Integer> totAkhir = new Vector();
+    public static Vector<String> IDPerhi = new Vector<String>();
+    public static Vector<String> jenPerhi = new Vector<String>();
+    public static Vector<String> bahPerhi = new Vector<String>();
+    public static Vector<Integer> berPerhi = new Vector<Integer>();
+    public static Vector<Integer> totPerhi = new Vector<Integer>();
 
-    public static Vector<String> IDPera = new Vector();
-    public static Vector<String> jenPera = new Vector();
+    public static Vector<Integer> lama = new Vector<Integer>();
+    public static Vector<Integer> totAwal = new Vector<Integer>();
+    public static Vector<Integer> diskon = new Vector<Integer>();
+    public static Vector<Integer> diskonRp = new Vector<Integer>();
+    public static Vector<Integer> totAkhir = new Vector<Integer>();
 
-    public static Vector<Integer> totAkhTran = new Vector();
-    public static Vector<Integer> bayar = new Vector();
-    public static Vector<Integer> kembalian = new Vector();
+    public static Vector<String> IDPera = new Vector<String>();
+    public static Vector<String> jenPera = new Vector<String>();
+
+    public static Vector<Integer> totAkhTran = new Vector<Integer>();
+    public static Vector<Integer> bayar = new Vector<Integer>();
+    public static Vector<Integer> kembalian = new Vector<Integer>();
 
     public static int pilih;
 
@@ -60,18 +61,7 @@ public class UASPD {
                 case 3:
 
                     n1();
-
-                    switch (pilih) {
-
-                        case 1:
-                            break;
-
-                        case 2:
-                            break;
-
-                        case 3:
-                            break;
-                    }
+                    dataPerhi();
                     break;
 
                 case 4:
@@ -250,7 +240,7 @@ public class UASPD {
                 System.out.println();
 
                 System.out.println("Data apa yang akan diganti: ");
-                System.out.println("ID/Nama/Alamat/Telepon/Semua");
+                System.out.print("ID/Nama/Alamat/Telepon/Semua? ");
                 String ganti = scan.readLine();
                 String S;
 
@@ -269,7 +259,7 @@ public class UASPD {
                                 if (S.equalsIgnoreCase(IDPel.elementAt(j))) {
                                     do {
                                         System.out.println("ID sudah terdaftar ganti yang lain");
-                                        System.out.print("ID Pelanggan: ");
+                                        System.out.print("Diganti dengan: ");
                                         S = scan.readLine();
                                     } while (S.equalsIgnoreCase(IDPel.elementAt(j)));
                                 }
@@ -431,7 +421,7 @@ public class UASPD {
                 System.out.println();
 
                 System.out.println("Data apa yang akan diganti: ");
-                System.out.println("ID/Nama/Lokasi/TglSimpan/Semua");
+                System.out.print("ID/Nama/Lokasi/TglSimpan/Semua? ");
                 String ganti = scan.readLine();
                 String S;
 
@@ -450,7 +440,7 @@ public class UASPD {
                                 if (S.equalsIgnoreCase(IDBran.elementAt(j))) {
                                     do {
                                         System.out.println("ID sudah terdaftar ganti yang lain");
-                                        System.out.print("ID IDBran: ");
+                                        System.out.print("Diganti dengan: ");
                                         S = scan.readLine();
                                     } while (S.equalsIgnoreCase(IDBran.elementAt(j)));
                                 }
@@ -561,6 +551,153 @@ public class UASPD {
                     System.out.println("Nama Brankas: " + nmBran.elementAt(i));
                     System.out.println("Lokasi: " + lokasi.elementAt(i));
                     System.out.println("Tanggal Penyimpanan: " + tglSimpan.elementAt(i));
+                    System.out.println();
+                }
+                break;
+        }
+    }
+
+    private static void dataPerhi() throws IOException {
+
+        switch (pilih) {
+
+            case 1:
+
+                System.out.println("=====Entry Data Perhiasan=====");
+                System.out.println();
+
+                for (int i = 0; i < IDPel.size(); i++) {
+
+                    System.out.println("Data Perhiasan Pelanggan " + (i + 1));
+
+                    System.out.print("ID Perhiasan: ");
+                    IDPerhi.addElement(scan.readLine());
+                    System.out.print("Jenis Perhiasan: ");
+                    jenPerhi.addElement(scan.readLine());
+                    System.out.print("Bahan Perhiasan: ");
+                    bahPerhi.addElement(scan.readLine());
+                    System.out.println();
+                }
+                break;
+
+            case 2:
+
+                System.out.println("=====Update Data Perhiasan=====");
+                System.out.println();
+
+                System.out.println("Data apa yang akan diganti: ");
+                System.out.print("ID/Jenis/Bahan/Semua? ");
+                String ganti = scan.readLine();
+                String S;
+
+                if (ganti.equalsIgnoreCase("ID")) {
+
+                    System.out.print("ID Perhiasan: ");
+                    S = scan.readLine();
+
+                    for (int i = 0; i < IDPerhi.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
+
+                            IDPerhi.removeElementAt(i);
+                            System.out.print("Diganti dengan: ");
+                            S = scan.readLine();
+
+                            for (int j = 0; j < IDPerhi.size(); j++) {
+                                if (S.equalsIgnoreCase(IDPerhi.elementAt(j))) {
+                                    do {
+                                        System.out.println("ID sudah terdaftar ganti yang lain");
+                                        System.out.print("Diganti dengan: ");
+                                        S = scan.readLine();
+                                    } while (S.equalsIgnoreCase(IDPerhi.elementAt(j)));
+                                }
+                            }
+                            IDPerhi.insertElementAt(S, i);
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Jenis")) {
+
+                    System.out.print("Jenis Perhiasan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < jenPerhi.size(); i++) {
+                        if (S.equalsIgnoreCase(jenPerhi.elementAt(i))) {
+
+                            jenPerhi.removeElementAt(i);
+                            System.out.print("Diganti dengan: ");
+                            S = scan.readLine();
+                            jenPerhi.insertElementAt(S, i);
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Bahan")) {
+
+                    System.out.print("Bahan Perhiasan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < bahPerhi.size(); i++) {
+                        if (S.equalsIgnoreCase(bahPerhi.elementAt(i))) {
+
+                            bahPerhi.removeElementAt(i);
+                            System.out.print("Diganti dengan: ");
+                            S = scan.readLine();
+                            bahPerhi.insertElementAt(S, i);
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Semua")) {
+
+                    System.out.print("ID Perhiasan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPerhi.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
+
+                            IDPerhi.removeElementAt(i);
+                            jenPerhi.removeElementAt(i);
+                            bahPerhi.removeElementAt(i);
+                            System.out.println("===Ganti===");
+                            System.out.print("ID Perhiasan: ");
+                            IDPerhi.insertElementAt(scan.readLine(), i);
+                            System.out.print("Jenis Perhiasan: ");
+                            jenPerhi.insertElementAt(scan.readLine(), i);
+                            System.out.print("Bahan Perhiasan: ");
+                            bahPerhi.insertElementAt(scan.readLine(), i);
+                        }
+                    }
+                }
+                System.out.println();
+                break;
+
+            case 3:
+
+                System.out.println("=====Delete Data Perhiasan=====");
+                System.out.println();
+
+                if (IDBran.isEmpty()) {
+                    System.out.println("Data Kosong");
+
+                } else {
+                    System.out.print("ID Perhiasan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDBran.size(); i++) {
+                        if (S.equalsIgnoreCase(IDBran.elementAt(i))) {
+
+                            IDPerhi.removeElementAt(i);
+                            jenPerhi.removeElementAt(i);
+                            bahPerhi.removeElementAt(i);
+                        }
+                    }
+                    System.out.println("Data telah dihapus");
+                }
+                System.out.println();
+                break;
+
+            case 4:
+
+                for (int i = 0; i < IDPerhi.size(); i++) {
+
+                    System.out.println("Data Perhiasan " + (i + 1));
+                    System.out.println("ID Perhiasan: " + IDPerhi.elementAt(i));
+                    System.out.println("Jenis Perhiasan: " + jenPerhi.elementAt(i));
+                    System.out.println("Bahan Perhiasan: " + bahPerhi.elementAt(i));
                     System.out.println();
                 }
                 break;

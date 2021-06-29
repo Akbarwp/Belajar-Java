@@ -67,18 +67,7 @@ public class UASPD {
                 case 4:
 
                     n1();
-
-                    switch (pilih) {
-
-                        case 1:
-                            break;
-
-                        case 2:
-                            break;
-
-                        case 3:
-                            break;
-                    }
+                    dataPera();
                     break;
 
                 case 5:
@@ -671,14 +660,14 @@ public class UASPD {
                 System.out.println("=====Delete Data Perhiasan=====");
                 System.out.println();
 
-                if (IDBran.isEmpty()) {
+                if (IDPerhi.isEmpty()) {
                     System.out.println("Data Kosong");
 
                 } else {
                     System.out.print("ID Perhiasan: ");
                     S = scan.readLine();
-                    for (int i = 0; i < IDBran.size(); i++) {
-                        if (S.equalsIgnoreCase(IDBran.elementAt(i))) {
+                    for (int i = 0; i < IDPerhi.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
 
                             IDPerhi.removeElementAt(i);
                             jenPerhi.removeElementAt(i);
@@ -698,6 +687,132 @@ public class UASPD {
                     System.out.println("ID Perhiasan: " + IDPerhi.elementAt(i));
                     System.out.println("Jenis Perhiasan: " + jenPerhi.elementAt(i));
                     System.out.println("Bahan Perhiasan: " + bahPerhi.elementAt(i));
+                    System.out.println();
+                }
+                break;
+        }
+    }
+
+    private static void dataPera() throws IOException {
+
+        switch (pilih) {
+
+            case 1:
+
+                System.out.println("=====Entry Data Perawatan=====");
+                System.out.println();
+
+                for (int i = 0; i < 2; i++) {
+
+                    System.out.println("Data Perawatan Perhiasan " + (i + 1));
+
+                    System.out.print("ID Perawatan: ");
+                    IDPera.addElement(scan.readLine());
+                    System.out.print("Jenis Perawatan: ");
+                    jenPera.addElement(scan.readLine());
+                    System.out.println();
+                }
+                break;
+
+            case 2:
+
+                System.out.println("=====Update Data Perawatan=====");
+                System.out.println();
+
+                System.out.println("Data apa yang akan diganti: ");
+                System.out.print("ID/Jenis/Semua? ");
+                String ganti = scan.readLine();
+                String S;
+
+                if (ganti.equalsIgnoreCase("ID")) {
+
+                    System.out.print("ID Perawatan: ");
+                    S = scan.readLine();
+
+                    for (int i = 0; i < IDPera.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPera.elementAt(i))) {
+
+                            IDPera.removeElementAt(i);
+                            System.out.print("Diganti dengan: ");
+                            S = scan.readLine();
+
+                            for (int j = 0; j < IDPera.size(); j++) {
+                                if (S.equalsIgnoreCase(IDPera.elementAt(j))) {
+                                    do {
+                                        System.out.println("ID sudah terdaftar ganti yang lain");
+                                        System.out.print("Diganti dengan: ");
+                                        S = scan.readLine();
+                                    } while (S.equalsIgnoreCase(IDPera.elementAt(j)));
+                                }
+                            }
+                            IDPera.insertElementAt(S, i);
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Jenis")) {
+
+                    System.out.print("Jenis Perawatan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < jenPera.size(); i++) {
+                        if (S.equalsIgnoreCase(jenPera.elementAt(i))) {
+
+                            jenPera.removeElementAt(i);
+                            System.out.print("Diganti dengan: ");
+                            S = scan.readLine();
+                            jenPera.insertElementAt(S, i);
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Semua")) {
+
+                    System.out.print("ID Perawatan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPera.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPera.elementAt(i))) {
+
+                            IDPera.removeElementAt(i);
+                            jenPera.removeElementAt(i);
+                            System.out.println("===Ganti===");
+                            System.out.print("ID Perawatan: ");
+                            IDPerhi.insertElementAt(scan.readLine(), i);
+                            System.out.print("Jenis Perawatan: ");
+                            jenPerhi.insertElementAt(scan.readLine(), i);
+                        }
+                    }
+                }
+                System.out.println();
+                break;
+
+            case 3:
+
+                System.out.println("=====Delete Data Perawatan=====");
+                System.out.println();
+
+                if (IDPera.isEmpty()) {
+                    System.out.println("Data Kosong");
+
+                } else {
+                    System.out.print("ID Perawatan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPera.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPera.elementAt(i))) {
+
+                            IDPera.removeElementAt(i);
+                            jenPera.removeElementAt(i);
+                        }
+                    }
+                    System.out.println("Data telah dihapus");
+                }
+                System.out.println();
+                break;
+
+            case 4:
+
+                for (int i = 0; i < IDPera.size(); i++) {
+
+                    System.out.println("Data Perawatan Perhiasan " + (i + 1));
+                    System.out.println("ID Perawatan: " + IDPera.elementAt(i));
+                    System.out.println("Jenis Perawatan: " + jenPera.elementAt(i));
                     System.out.println();
                 }
                 break;

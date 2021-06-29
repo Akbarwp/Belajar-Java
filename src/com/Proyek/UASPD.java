@@ -73,18 +73,7 @@ public class UASPD {
                 case 5:
 
                     n1();
-
-                    switch (pilih) {
-
-                        case 1:
-                            break;
-
-                        case 2:
-                            break;
-
-                        case 3:
-                            break;
-                    }
+                    tranSimpan();
                     break;
 
                 case 6:
@@ -121,9 +110,9 @@ public class UASPD {
         System.out.println("2. Data Brankas");
         System.out.println("3. Data Perhiasan");
         System.out.println("4. Data Perawatan");
-        System.out.println("5. Data Transaksi Penjualan");
-        System.out.println("6. Data Transaksi Pembayaran");
-        System.out.println("7. Cetak Nota Pembayaran");
+        System.out.println("5. Data Transaksi Penyimpanan");
+        System.out.println("6. Data Transaksi Perawatan");
+        System.out.println("7. Cetak Nota");
         System.out.println("8. Exit");
         pilihan();
     }
@@ -167,17 +156,17 @@ public class UASPD {
 
         } else if (pilih == 5) {
 
-            System.out.println("=====Data Transaksi Penjualan=====");
-            System.out.println("1. Entry Data Transaksi Penjualan");
-            System.out.println("2. Update Data Transaksi Penjualan");
-            System.out.println("3. Delete Data Transaksi Penjualan");
+            System.out.println("=====Data Transaksi Penyimpanan=====");
+            System.out.println("1. Entry Data Transaksi Penyimpanan");
+            System.out.println("2. Update Data Transaksi Penyimpanan");
+            System.out.println("3. Delete Data Transaksi Penyimpanan");
 
         } else if (pilih == 6) {
 
-            System.out.println("=====Data Transaksi Pembayaran=====");
-            System.out.println("1. Entry Data Transaksi Pembayaran");
-            System.out.println("2. Update Data Transaksi Pembayaran");
-            System.out.println("3. Delete Data Transaksi Pembayaran");
+            System.out.println("=====Data Transaksi Perawatan=====");
+            System.out.println("1. Entry Data Transaksi Perawatan");
+            System.out.println("2. Update Data Transaksi Perawatan");
+            System.out.println("3. Delete Data Transaksi Perawatan");
 
         }
         pilihan();
@@ -702,7 +691,7 @@ public class UASPD {
                 System.out.println("=====Entry Data Perawatan=====");
                 System.out.println();
 
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < IDPerhi.size(); i++) {
 
                     System.out.println("Data Perawatan Perhiasan " + (i + 1));
 
@@ -816,6 +805,95 @@ public class UASPD {
                     System.out.println();
                 }
                 break;
+        }
+    }
+
+    private static void tranSimpan() throws IOException {
+
+        switch (pilih) {
+
+            case 1:
+                System.out.println("=====Entry Data Transaksi Penyimpanan=====");
+                System.out.println();
+
+                System.out.print("Masukkan ID Pelanggan: ");
+                String S = scan.readLine();
+                for (int i = 0; i < IDPel.size(); i++) {
+                    if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+
+                        System.out.println("Daftar Penyimpanan Pelanggan: " + S);
+                        System.out.println("Nama: " + nmPel.elementAt(i));
+                        System.out.println("Alamat: " + almt.elementAt(i));
+                        System.out.println("Nomor Telepon: " + telp.elementAt(i));
+                        System.out.println("ID Perhiasan: " + IDPerhi.elementAt(i));
+                        System.out.println("Jenis Perhiasan: " + jenPerhi.elementAt(i));
+                        System.out.println("Bahan Perhiasan: " + bahPerhi.elementAt(i));
+                        System.out.println();
+
+                        System.out.println("=====Masukkan Data=====");
+                        System.out.print("Berat Pehiasan(gram): ");
+                        berPerhi.addElement(Integer.parseInt(scan.readLine()));
+                        System.out.print("Lama Simpan(tahun): ");
+                        lama.addElement(Integer.parseInt(scan.readLine()));
+
+                        biayaBahan();
+                        System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
+                        System.out.println("Diskon: " + diskon.elementAt(i) + "%");
+                        System.out.println("Diskon(Rp): Rp" + diskonRp.elementAt(i));
+                        System.out.println("Total Akhir: Rp" + totAkhir.elementAt(i));
+                    }
+                }
+                break;
+
+            case 2:
+                System.out.println("=====Update Data Transaksi Penyimpanan=====");
+                System.out.println();
+                break;
+
+            case 3:
+                System.out.println("=====Delete Data Transaksi Penyimpanan=====");
+                System.out.println();
+                break;
+        }
+    }
+
+    private static void biayaBahan() throws IOException {
+
+        for (int i = 0; i < IDPel.size(); i++) {
+
+            if (bahPerhi.elementAt(i).equalsIgnoreCase("Emas")) {
+
+                totAwal.addElement(30000);
+
+            } else {
+
+                totAwal.addElement(20000);
+            }
+
+            // Biaya Lainnya
+            totAwal.set(i, totAwal.elementAt(i) + 50000);
+            // Biaya Lama Simpan
+            totAwal.set(i, totAwal.elementAt(i) * lama.elementAt(i));
+
+            // Diskon
+            if (totAwal.elementAt(i) < 150000) {
+
+                diskon.addElement(10);
+                diskonRp.addElement(diskon.elementAt(i) * totAwal.elementAt(i) / 100);
+                totAkhir.addElement(totAwal.elementAt(i) - diskonRp.elementAt(i));
+
+            } else if (totAwal.elementAt(i) > 150000 && totAwal.elementAt(i) < 300000) {
+
+                diskon.addElement(20);
+                diskonRp.addElement(diskon.elementAt(i) * totAwal.elementAt(i) / 100);
+                totAkhir.addElement(totAwal.elementAt(i) - diskonRp.elementAt(i));
+
+            } else if (totAwal.elementAt(i) > 600000) {
+
+                diskon.addElement(30);
+                diskonRp.addElement(diskon.elementAt(i) * totAwal.elementAt(i) / 100);
+                totAkhir.addElement(totAwal.elementAt(i) - diskonRp.elementAt(i));
+            }
         }
     }
 }

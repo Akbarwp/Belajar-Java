@@ -21,7 +21,6 @@ public class UASPD {
     public static Vector<String> jenPerhi = new Vector<String>();
     public static Vector<String> bahPerhi = new Vector<String>();
     public static Vector<Integer> berPerhi = new Vector<Integer>();
-    public static Vector<Integer> totPerhi = new Vector<Integer>();
 
     public static Vector<Integer> lama = new Vector<Integer>();
     public static Vector<Integer> totAwal = new Vector<Integer>();
@@ -80,18 +79,7 @@ public class UASPD {
                 case 6:
 
                     n1();
-
-                    switch (pilih) {
-
-                        case 1:
-                            break;
-
-                        case 2:
-                            break;
-
-                        case 3:
-                            break;
-                    }
+                    tranRawat();
                     break;
 
                 case 7:
@@ -689,6 +677,10 @@ public class UASPD {
                 System.out.println("=====Entry Data Perawatan=====");
                 System.out.println();
 
+                System.out.println("===Menu Perawatan===");
+                System.out.println("Pembersihan/Pencucian/Tidak");
+                System.out.println();
+
                 for (int i = 0; i < IDPerhi.size(); i++) {
 
                     System.out.println("Data Perawatan Perhiasan " + (i + 1));
@@ -863,6 +855,10 @@ public class UASPD {
                             int A = Integer.parseInt(scan.readLine());
                             berPerhi.set(i, A);
                             biaya();
+                            System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
+                            System.out.println("Diskon: " + diskon.elementAt(i) + "%");
+                            System.out.println("Diskon(Rp): Rp" + diskonRp.elementAt(i));
+                            System.out.println("Total Akhir: Rp" + totAkhir.elementAt(i));
                         }
                     }
 
@@ -877,6 +873,10 @@ public class UASPD {
                             int A = Integer.parseInt(scan.readLine());
                             lama.set(i, A);
                             biaya();
+                            System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
+                            System.out.println("Diskon: " + diskon.elementAt(i) + "%");
+                            System.out.println("Diskon(Rp): Rp" + diskonRp.elementAt(i));
+                            System.out.println("Total Akhir: Rp" + totAkhir.elementAt(i));
                         }
                     }
 
@@ -895,6 +895,10 @@ public class UASPD {
                             int B = Integer.parseInt(scan.readLine());
                             lama.set(i, B);
                             biaya();
+                            System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
+                            System.out.println("Diskon: " + diskon.elementAt(i) + "%");
+                            System.out.println("Diskon(Rp): Rp" + diskonRp.elementAt(i));
+                            System.out.println("Total Akhir: Rp" + totAkhir.elementAt(i));
                         }
                     }
                 }
@@ -1022,5 +1026,120 @@ public class UASPD {
             }
         }
         return 0;
+    }
+
+    private static void tranRawat() throws IOException {
+
+        switch (pilih) {
+
+            case 1:
+
+                System.out.println("=====Entry Data Transaksi Perawatan=====");
+                System.out.println();
+
+                System.out.print("Masukkan ID Pelanggan: ");
+                S = scan.readLine();
+                for (int i = 0; i < IDPel.size(); i++) {
+                    if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+
+                        System.out.println("Daftar Penyimpanan Pelanggan: " + S);
+                        System.out.println("Nama: " + nmPel.elementAt(i));
+                        System.out.println("Alamat: " + almt.elementAt(i));
+                        System.out.println("Nomor Telepon: " + telp.elementAt(i));
+                        System.out.println("ID Perhiasan: " + IDPerhi.elementAt(i));
+                        System.out.println("Jenis Perhiasan: " + jenPerhi.elementAt(i));
+                        System.out.println("Bahan Perhiasan: " + bahPerhi.elementAt(i));
+                        System.out.println("Berat Pehiasan: " + berPerhi.elementAt(i));
+                        System.out.println("Lama Simpan: " + lama.elementAt(i));
+                        System.out.println("ID Perawatan: " + IDPera.elementAt(i));
+                        System.out.println("Jenis Perawatan: " + jenPera.elementAt(i));
+                        System.out.println("Total Akhir: Rp" + totAkhir.elementAt(i));
+                        biayaAwal2();
+                        rawat();
+                        System.out.println("Total Setelah Biaya Perawatan: Rp" + totAkhTran.elementAt(i));
+                        System.out.println();
+                        System.out.println("===Pembayaran===");
+                        pembayaran();
+                    }
+                }
+                System.out.println();
+                break;
+
+            case 2:
+
+                System.out.println("=====Update Data Transaksi Perawatan=====");
+                System.out.println();
+
+                System.out.println("Data apa yang akan diganti: Bayar");
+                System.out.print("ID Pelanggan: ");
+                S = scan.readLine();
+                for (int i = 0; i < IDPel.size(); i++) {
+                    if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+
+                        System.out.println("Total Setelah Biaya Perawatan: Rp" + totAkhTran.elementAt(i));
+                        pembayaran();
+                    }
+                }
+
+                System.out.println();
+                break;
+
+            case 3:
+                break;
+        }
+    }
+
+    private static int biayaAwal2() throws IOException {
+
+        for (int i = 0; i < IDPel.size(); i++) {
+            if (IDPel.elementAt(i).equalsIgnoreCase(S)) {
+
+                totAkhTran.addElement(0);
+                bayar.addElement(0);
+                kembalian.addElement(0);
+            }
+        }
+        return 0;
+    }
+
+    private static int rawat() {
+
+        for (int i = 0; i < IDPerhi.size(); i++) {
+            if (IDPel.elementAt(i).equalsIgnoreCase(S)) {
+
+                if (jenPera.elementAt(i).equalsIgnoreCase("Pembersihan")) {
+
+                    totAkhTran.set(i, totAkhir.elementAt(i) + (lama.elementAt(i) * 50000));
+
+                } else if (jenPera.elementAt(i).equalsIgnoreCase("Pencucian")) {
+
+                    totAkhTran.set(i, totAkhir.elementAt(i) + (lama.elementAt(i) * 100000));
+
+                } else if (jenPera.elementAt(i).equalsIgnoreCase("Tidak")) {
+
+                    totAkhTran.set(i, totAkhir.elementAt(i) + 0);
+                }
+            }
+        }
+        return 0;
+    }
+
+    private static void pembayaran() throws IOException {
+
+        for (int i = 0; i < IDPel.size(); i++) {
+            if (IDPel.elementAt(i).equalsIgnoreCase(S)) {
+                do {
+                    System.out.print("Pembayaran: ");
+                    bayar.set(i, Integer.parseInt(scan.readLine()));
+                    if (bayar.elementAt(i) > totAkhTran.elementAt(i)) {
+
+                        kembalian.set(i, totAkhTran.elementAt(i) - bayar.elementAt(i));
+
+                    } else {
+                        System.out.println("Uang tidak cukup");
+                    }
+                } while (bayar.elementAt(i) < totAkhTran.elementAt(i));
+            }
+        }
     }
 }

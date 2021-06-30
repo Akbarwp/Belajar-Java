@@ -22,12 +22,14 @@ public class UASPD {
     public static Vector<String> bahPerhi = new Vector<String>();
     public static Vector<Integer> berPerhi = new Vector<Integer>();
 
+    public static Vector<String> IDTranSim = new Vector<String>();
     public static Vector<Integer> lama = new Vector<Integer>();
     public static Vector<Integer> totAwal = new Vector<Integer>();
     public static Vector<Integer> diskon = new Vector<Integer>();
     public static Vector<Integer> diskonRp = new Vector<Integer>();
     public static Vector<Integer> totAkhir = new Vector<Integer>();
 
+    public static Vector<String> IDTranPer = new Vector<String>();
     public static Vector<String> IDPera = new Vector<String>();
     public static Vector<String> jenPera = new Vector<String>();
 
@@ -121,6 +123,7 @@ public class UASPD {
             System.out.println("1. Entry Data Pelanggan");
             System.out.println("2. Update Data Pelanggan");
             System.out.println("3. Delete Data Pelanggan");
+            System.out.println("4. Show Data Pelanggan");
 
         } else if (pilih == 3) {
 
@@ -128,6 +131,7 @@ public class UASPD {
             System.out.println("1. Entry Data Perhiasan");
             System.out.println("2. Update Data Perhiasan");
             System.out.println("3. Delete Data Perhiasan");
+            System.out.println("4. Show Data Perhiasan");
 
         } else if (pilih == 2) {
 
@@ -135,6 +139,7 @@ public class UASPD {
             System.out.println("1. Entry Data Brankas");
             System.out.println("2. Update Data Brankas");
             System.out.println("3. Delete Data Brankas");
+            System.out.println("4. Show Data Pelanggan");
 
         } else if (pilih == 4) {
 
@@ -142,6 +147,7 @@ public class UASPD {
             System.out.println("1. Entry Data Perawatan");
             System.out.println("2. Update Data Perawatan");
             System.out.println("3. Delete Data Perawatan");
+            System.out.println("4. Show Data Perawatan");
 
         } else if (pilih == 5) {
 
@@ -149,6 +155,7 @@ public class UASPD {
             System.out.println("1. Entry Data Transaksi Penyimpanan");
             System.out.println("2. Update Data Transaksi Penyimpanan");
             System.out.println("3. Delete Data Transaksi Penyimpanan");
+            System.out.println("4. Show Data Transaksi Penyimpanan");
 
         } else if (pilih == 6) {
 
@@ -156,6 +163,7 @@ public class UASPD {
             System.out.println("1. Entry Data Transaksi Perawatan");
             System.out.println("2. Update Data Transaksi Perawatan");
             System.out.println("3. Delete Data Transaksi Perawatan");
+            System.out.println("4. Show Data Transaksi Perawatan");
 
         }
         pilihan();
@@ -215,7 +223,6 @@ public class UASPD {
                     System.out.print("ID Pelanggan: ");
                     S = scan.readLine();
                     for (int i = 0; i < IDPel.size(); i++) {
-
                         if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
 
                             IDPel.removeElementAt(i);
@@ -236,11 +243,12 @@ public class UASPD {
 
                 } else if (ganti.equalsIgnoreCase("Nama")) {
 
-                    System.out.print("Nama: ");
+                    System.out.print("ID Pelanggan: ");
                     S = scan.readLine();
-                    for (int i = 0; i < nmPel.size(); i++) {
-                        if (S.equalsIgnoreCase(nmPel.elementAt(i))) {
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
 
+                            System.out.println("Nama: " + nmPel.elementAt(i));
                             nmPel.removeElementAt(i);
                             System.out.print("Diganti dengan: ");
                             S = scan.readLine();
@@ -250,11 +258,12 @@ public class UASPD {
 
                 } else if (ganti.equalsIgnoreCase("Alamat")) {
 
-                    System.out.print("Alamat: ");
+                    System.out.print("ID Pelanggan: ");
                     S = scan.readLine();
-                    for (int i = 0; i < almt.size(); i++) {
-                        if (S.equalsIgnoreCase(almt.elementAt(i))) {
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
 
+                            System.out.println("Alamat: " + almt.elementAt(i));
                             almt.removeElementAt(i);
                             System.out.print("Diganti dengan: ");
                             S = scan.readLine();
@@ -264,11 +273,12 @@ public class UASPD {
 
                 } else if (ganti.equalsIgnoreCase("Telepon")) {
 
-                    System.out.print("Telepon: ");
+                    System.out.print("ID Pelanggan: ");
                     S = scan.readLine();
-                    for (int i = 0; i < telp.size(); i++) {
-                        if (S.equalsIgnoreCase(telp.elementAt(i))) {
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
 
+                            System.out.println("Telepon: " + telp.elementAt(i));
                             telp.removeElementAt(i);
                             System.out.print("Diganti dengan: ");
                             S = scan.readLine();
@@ -329,6 +339,9 @@ public class UASPD {
 
             case 4:
 
+                System.out.println("=====Show Data Pelanggan=====");
+                System.out.println();
+
                 for (int i = 0; i < IDPel.size(); i++) {
 
                     System.out.println("Data Pelanggan " + (i + 1));
@@ -375,8 +388,6 @@ public class UASPD {
                     nmBran.addElement(scan.readLine());
                     System.out.print("Lokasi Brankas: ");
                     lokasi.addElement(scan.readLine());
-                    System.out.print("Tanggal Penyimpanan: ");
-                    tglSimpan.addElement(scan.readLine());
                     System.out.println();
                 }
                 break;
@@ -387,7 +398,7 @@ public class UASPD {
                 System.out.println();
 
                 System.out.println("Data apa yang akan diganti: ");
-                System.out.print("ID/Nama/Lokasi/TglSimpan/Semua? ");
+                System.out.print("ID/Nama/Lokasi/Semua? ");
                 String ganti = scan.readLine();
 
                 if (ganti.equalsIgnoreCase("ID")) {
@@ -416,11 +427,12 @@ public class UASPD {
 
                 } else if (ganti.equalsIgnoreCase("Nama")) {
 
-                    System.out.print("Nama: ");
+                    System.out.print("ID Brankas: ");
                     S = scan.readLine();
-                    for (int i = 0; i < nmBran.size(); i++) {
-                        if (S.equalsIgnoreCase(nmBran.elementAt(i))) {
+                    for (int i = 0; i < IDBran.size(); i++) {
+                        if (S.equalsIgnoreCase(IDBran.elementAt(i))) {
 
+                            System.out.println("Nama: " + nmBran.elementAt(i));
                             nmBran.removeElementAt(i);
                             System.out.print("Diganti dengan: ");
                             S = scan.readLine();
@@ -430,29 +442,16 @@ public class UASPD {
 
                 } else if (ganti.equalsIgnoreCase("Lokasi")) {
 
-                    System.out.print("Lokasi: ");
+                    System.out.print("ID Brankas: ");
                     S = scan.readLine();
-                    for (int i = 0; i < lokasi.size(); i++) {
-                        if (S.equalsIgnoreCase(lokasi.elementAt(i))) {
+                    for (int i = 0; i < IDBran.size(); i++) {
+                        if (S.equalsIgnoreCase(IDBran.elementAt(i))) {
 
+                            System.out.println("Lokasi: " + lokasi.elementAt(i));
                             lokasi.removeElementAt(i);
                             System.out.print("Diganti dengan: ");
                             S = scan.readLine();
                             lokasi.insertElementAt(S, i);
-                        }
-                    }
-
-                } else if (ganti.equalsIgnoreCase("TglSimpan")) {
-
-                    System.out.print("Tanggal Penyimpanan: ");
-                    S = scan.readLine();
-                    for (int i = 0; i < tglSimpan.size(); i++) {
-                        if (S.equalsIgnoreCase(tglSimpan.elementAt(i))) {
-
-                            tglSimpan.removeElementAt(i);
-                            System.out.print("Diganti dengan: ");
-                            S = scan.readLine();
-                            tglSimpan.insertElementAt(S, i);
                         }
                     }
 
@@ -474,8 +473,6 @@ public class UASPD {
                             nmBran.insertElementAt(scan.readLine(), i);
                             System.out.print("Lokasi: ");
                             lokasi.insertElementAt(scan.readLine(), i);
-                            System.out.print("Tanggal Penyimpanan: ");
-                            tglSimpan.insertElementAt(scan.readLine(), i);
                         }
                     }
                 }
@@ -499,7 +496,6 @@ public class UASPD {
                             IDBran.removeElementAt(i);
                             nmBran.removeElementAt(i);
                             lokasi.removeElementAt(i);
-                            tglSimpan.removeElementAt(i);
                         }
                     }
                     System.out.println("Data telah dihapus");
@@ -509,13 +505,15 @@ public class UASPD {
 
             case 4:
 
+                System.out.println("=====Show Data Brankas=====");
+                System.out.println();
+
                 for (int i = 0; i < IDBran.size(); i++) {
 
                     System.out.println("Data Brankas " + (i + 1));
                     System.out.println("ID Brankas: " + IDBran.elementAt(i));
                     System.out.println("Nama Brankas: " + nmBran.elementAt(i));
                     System.out.println("Lokasi: " + lokasi.elementAt(i));
-                    System.out.println("Tanggal Penyimpanan: " + tglSimpan.elementAt(i));
                     System.out.println();
                 }
                 break;
@@ -558,7 +556,6 @@ public class UASPD {
 
                     System.out.print("ID Perhiasan: ");
                     S = scan.readLine();
-
                     for (int i = 0; i < IDPerhi.size(); i++) {
                         if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
 
@@ -581,11 +578,12 @@ public class UASPD {
 
                 } else if (ganti.equalsIgnoreCase("Jenis")) {
 
-                    System.out.print("Jenis Perhiasan: ");
+                    System.out.print("ID Perhiasan: ");
                     S = scan.readLine();
-                    for (int i = 0; i < jenPerhi.size(); i++) {
-                        if (S.equalsIgnoreCase(jenPerhi.elementAt(i))) {
+                    for (int i = 0; i < IDPerhi.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
 
+                            System.out.println("Jenis Perhiasan: " + jenPerhi.elementAt(i));
                             jenPerhi.removeElementAt(i);
                             System.out.print("Diganti dengan: ");
                             S = scan.readLine();
@@ -595,11 +593,12 @@ public class UASPD {
 
                 } else if (ganti.equalsIgnoreCase("Bahan")) {
 
-                    System.out.print("Bahan Perhiasan: ");
+                    System.out.print("ID Perhiasan: ");
                     S = scan.readLine();
-                    for (int i = 0; i < bahPerhi.size(); i++) {
-                        if (S.equalsIgnoreCase(bahPerhi.elementAt(i))) {
+                    for (int i = 0; i < IDPerhi.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
 
+                            System.out.println("Bahan Perhiasan: " + bahPerhi.elementAt(i));
                             bahPerhi.removeElementAt(i);
                             System.out.print("Diganti dengan: ");
                             S = scan.readLine();
@@ -656,6 +655,9 @@ public class UASPD {
 
             case 4:
 
+                System.out.println("=====Show Data Perhiasan=====");
+                System.out.println();
+
                 for (int i = 0; i < IDPerhi.size(); i++) {
 
                     System.out.println("Data Perhiasan " + (i + 1));
@@ -678,7 +680,7 @@ public class UASPD {
                 System.out.println();
 
                 System.out.println("===Menu Perawatan===");
-                System.out.println("Pembersihan/Pencucian/Tidak");
+                System.out.println("Bersih/Cuci/Tidak");
                 System.out.println();
 
                 for (int i = 0; i < IDPerhi.size(); i++) {
@@ -706,7 +708,6 @@ public class UASPD {
 
                     System.out.print("ID Perawatan: ");
                     S = scan.readLine();
-
                     for (int i = 0; i < IDPera.size(); i++) {
                         if (S.equalsIgnoreCase(IDPera.elementAt(i))) {
 
@@ -729,11 +730,12 @@ public class UASPD {
 
                 } else if (ganti.equalsIgnoreCase("Jenis")) {
 
-                    System.out.print("Jenis Perawatan: ");
+                    System.out.print("ID Perawatan: ");
                     S = scan.readLine();
-                    for (int i = 0; i < jenPera.size(); i++) {
-                        if (S.equalsIgnoreCase(jenPera.elementAt(i))) {
+                    for (int i = 0; i < IDPera.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPera.elementAt(i))) {
 
+                            System.out.println("Jenis Perawatan: " + jenPera.elementAt(i));
                             jenPera.removeElementAt(i);
                             System.out.print("Diganti dengan: ");
                             S = scan.readLine();
@@ -786,6 +788,9 @@ public class UASPD {
 
             case 4:
 
+                System.out.println("=====Show Data Perawatan=====");
+                System.out.println();
+
                 for (int i = 0; i < IDPera.size(); i++) {
 
                     System.out.println("Data Perawatan Perhiasan " + (i + 1));
@@ -820,6 +825,10 @@ public class UASPD {
                         System.out.println();
 
                         System.out.println("=====Masukkan Data=====");
+                        System.out.print("ID Transaksi Penyimpanan: ");
+                        IDTranSim.addElement(scan.readLine());
+                        System.out.print("Tanggal Penyimpanan: ");
+                        tglSimpan.addElement(scan.readLine());
                         System.out.print("Berat Pehiasan(gram): ");
                         berPerhi.addElement(Integer.parseInt(scan.readLine()));
                         System.out.print("Lama Simpan(tahun): ");
@@ -841,16 +850,31 @@ public class UASPD {
                 System.out.println();
 
                 System.out.println("Data apa yang akan diganti: ");
-                System.out.print("Berat/Lama Simpan/Semua? ");
+                System.out.print("ID/Berat/Lama Simpan/TglSimpan/Semua? ");
                 String ganti = scan.readLine();
 
-                if (ganti.equalsIgnoreCase("Berat")) {
+                if (ganti.equalsIgnoreCase("ID")) {
 
-                    System.out.print("ID Perhiasan: ");
+                    System.out.print("ID Pelanggan: ");
                     S = scan.readLine();
-                    for (int i = 0; i < IDPerhi.size(); i++) {
-                        if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
 
+                            System.out.println("ID Transaksi Penyimpanan: " + IDTranSim.elementAt(i));
+                            System.out.print("Diganti dengan: ");
+                            String A = scan.readLine();
+                            IDTranSim.set(i, A);
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Berat")) {
+
+                    System.out.print("ID Pelanggan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+
+                            System.out.println("Berat Perhiasan(gram): " + berPerhi.elementAt(i));
                             System.out.print("Diganti dengan: ");
                             int A = Integer.parseInt(scan.readLine());
                             berPerhi.set(i, A);
@@ -864,11 +888,12 @@ public class UASPD {
 
                 } else if (ganti.equalsIgnoreCase("Lama Simpan")) {
 
-                    System.out.print("ID Perhiasan: ");
+                    System.out.print("ID Pelanggan: ");
                     S = scan.readLine();
-                    for (int i = 0; i < IDPerhi.size(); i++) {
-                        if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
 
+                            System.out.println("Lama Simpan(tahun): " + lama.elementAt(i));
                             System.out.print("Diganti dengan: ");
                             int A = Integer.parseInt(scan.readLine());
                             lama.set(i, A);
@@ -880,14 +905,35 @@ public class UASPD {
                         }
                     }
 
+                } else if (ganti.equalsIgnoreCase("TglSimpan")) {
+
+                    System.out.print("ID Pelanggan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+
+                            System.out.println("Tanggal Penyimpanan: " + tglSimpan.elementAt(i));
+                            tglSimpan.removeElementAt(i);
+                            System.out.print("Diganti dengan: ");
+                            S = scan.readLine();
+                            tglSimpan.insertElementAt(S, i);
+                        }
+                    }
+
                 } else if (ganti.equalsIgnoreCase("Semua")) {
 
-                    System.out.print("ID Perhiasan: ");
+                    System.out.print("ID Pelanggan: ");
                     S = scan.readLine();
-                    for (int i = 0; i < IDPerhi.size(); i++) {
-                        if (S.equalsIgnoreCase(IDPerhi.elementAt(i))) {
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
 
                             System.out.println("===Ganti===");
+                            System.out.print("ID Transaksi Penyimpanan: ");
+                            String D = scan.readLine();
+                            IDTranSim.set(i, D);
+                            System.out.print("Tanggal Penyimpanan:: ");
+                            String C = scan.readLine();
+                            tglSimpan.set(i, C);
                             System.out.print("Berat Perhiasan(gram): ");
                             int A = Integer.parseInt(scan.readLine());
                             berPerhi.set(i, A);
@@ -909,7 +955,7 @@ public class UASPD {
                 System.out.println("=====Delete Data Transaksi Penyimpanan=====");
                 System.out.println();
 
-                if (IDPera.isEmpty()) {
+                if (IDTranSim.isEmpty()) {
                     System.out.println("Data Kosong");
 
                 } else {
@@ -919,6 +965,8 @@ public class UASPD {
                     for (int i = 0; i < IDPel.size(); i++) {
                         if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
 
+                            IDTranSim.removeElementAt(i);
+                            tglSimpan.removeElementAt(i);
                             berPerhi.removeElementAt(i);
                             lama.removeElementAt(i);
                             totAwal.removeElementAt(i);
@@ -934,7 +982,10 @@ public class UASPD {
 
             case 4:
 
-                for (int i = 0; i < IDPel.size(); i++) {
+                System.out.println("=====Show Data Transaksi Penyimpanan=====");
+                System.out.println();
+
+                for (int i = 0; i < IDTranSim.size(); i++) {
 
                     System.out.println("Daftar Penyimpanan Pelanggan: " + (i + 1));
                     System.out.println("ID Pelanggan: " + IDPel.elementAt(i));
@@ -945,6 +996,8 @@ public class UASPD {
                     System.out.println("Jenis Perhiasan: " + jenPerhi.elementAt(i));
                     System.out.println("Bahan Perhiasan: " + bahPerhi.elementAt(i));
 
+                    System.out.println("ID Transaksi Penyimpanan: " + IDTranSim.elementAt(i));
+                    System.out.println("Tanggal Penyimpanan: " + tglSimpan.elementAt(i));
                     System.out.println("Berat Pehiasan(gram): " + berPerhi.elementAt(i) + " gram");
                     System.out.println("Lama Simpan(tahun): " + lama.elementAt(i) + " tahun");
 
@@ -1051,9 +1104,16 @@ public class UASPD {
                         System.out.println("Bahan Perhiasan: " + bahPerhi.elementAt(i));
                         System.out.println("Berat Pehiasan: " + berPerhi.elementAt(i));
                         System.out.println("Lama Simpan: " + lama.elementAt(i));
+                        System.out.println("Tanggal Penyimpanan: " + tglSimpan.elementAt(i));
                         System.out.println("ID Perawatan: " + IDPera.elementAt(i));
                         System.out.println("Jenis Perawatan: " + jenPera.elementAt(i));
                         System.out.println("Total Akhir: Rp" + totAkhir.elementAt(i));
+                        System.out.println();
+
+                        System.out.println("===Masukkan Data===");
+                        System.out.print("ID Transaksi Perawatan: ");
+                        IDTranPer.addElement(scan.readLine());
+
                         biayaAwal2();
                         rawat();
                         System.out.println("Total Setelah Biaya Perawatan: Rp" + totAkhTran.elementAt(i));
@@ -1070,21 +1130,107 @@ public class UASPD {
                 System.out.println("=====Update Data Transaksi Perawatan=====");
                 System.out.println();
 
-                System.out.println("Data apa yang akan diganti: Bayar");
-                System.out.print("ID Pelanggan: ");
-                S = scan.readLine();
-                for (int i = 0; i < IDPel.size(); i++) {
-                    if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+                System.out.println("Data apa yang akan diganti: ");
+                System.out.print("ID/Bayar/Semua? ");
+                String ganti = scan.readLine();
 
-                        System.out.println("Total Setelah Biaya Perawatan: Rp" + totAkhTran.elementAt(i));
-                        pembayaran();
+                if (ganti.equalsIgnoreCase("ID")) {
+
+                    System.out.print("ID Pelanggan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+
+                            System.out.println("ID Transaksi Perawatan: " + IDTranPer.elementAt(i));
+                            System.out.print("Diganti dengan: ");
+                            String A = scan.readLine();
+                            IDTranPer.set(i, A);
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Bayar")) {
+
+                    System.out.print("ID Pelanggan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+
+                            System.out.println("Total Setelah Biaya Perawatan: Rp" + totAkhTran.elementAt(i));
+                            pembayaran();
+                        }
+                    }
+
+                } else if (ganti.equalsIgnoreCase("Semua")) {
+
+                    System.out.print("ID Pelanggan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+
+                            System.out.print("ID Transaksi Perawatan: ");
+                            String A = scan.readLine();
+                            IDTranPer.set(i, A);
+                            pembayaran();
+                        }
                     }
                 }
-
                 System.out.println();
                 break;
 
             case 3:
+
+                System.out.println("=====Delete Data Transaksi Perawatan=====");
+                System.out.println();
+
+                if (IDTranPer.isEmpty()) {
+                    System.out.println("Data Kosong");
+
+                } else {
+
+                    System.out.print("Masukkan ID Pelanggan: ");
+                    S = scan.readLine();
+                    for (int i = 0; i < IDPel.size(); i++) {
+                        if (S.equalsIgnoreCase(IDPel.elementAt(i))) {
+
+                            IDTranPer.removeElementAt(i);
+                            bayar.removeElementAt(i);
+                            kembalian.removeElementAt(i);
+                            totAkhTran.removeElementAt(i);
+                        }
+                        System.out.println("Data telah dihapus");
+                    }
+                }
+                System.out.println();
+                break;
+
+            case 4:
+
+                System.out.println("=====Show Data Transaksi Perawatan=====");
+                System.out.println();
+
+                for (int i = 0; i < IDPel.size(); i++) {
+
+                    System.out.println("Daftar Penyimpanan Pelanggan: " + S);
+                    System.out.println("ID Transaksi Perawatan: " + IDTranPer.elementAt(i));
+                    System.out.println("Nama: " + nmPel.elementAt(i));
+                    System.out.println("Alamat: " + almt.elementAt(i));
+                    System.out.println("Nomor Telepon: " + telp.elementAt(i));
+                    System.out.println("ID Perhiasan: " + IDPerhi.elementAt(i));
+                    System.out.println("Jenis Perhiasan: " + jenPerhi.elementAt(i));
+                    System.out.println("Bahan Perhiasan: " + bahPerhi.elementAt(i));
+                    System.out.println("Berat Pehiasan: " + berPerhi.elementAt(i));
+                    System.out.println("Lama Simpan: " + lama.elementAt(i));
+                    System.out.println("Tanggal Penyimpanan: " + tglSimpan.elementAt(i));
+                    System.out.println("ID Perawatan: " + IDPera.elementAt(i));
+                    System.out.println("Jenis Perawatan: " + jenPera.elementAt(i));
+                    System.out.println("Total Akhir: Rp" + totAkhir.elementAt(i));
+                    System.out.println("Total Setelah Biaya Perawatan: Rp" + totAkhTran.elementAt(i));
+                    System.out.println("Pembayaran: Rp" + bayar.elementAt(i));
+                    if (bayar.elementAt(i) > totAkhTran.elementAt(i)) {
+                        System.out.println("Kembalian: Rp" + kembalian.elementAt(i));
+                    }
+                }
+                System.out.println();
                 break;
         }
     }
@@ -1107,11 +1253,11 @@ public class UASPD {
         for (int i = 0; i < IDPerhi.size(); i++) {
             if (IDPel.elementAt(i).equalsIgnoreCase(S)) {
 
-                if (jenPera.elementAt(i).equalsIgnoreCase("Pembersihan")) {
+                if (jenPera.elementAt(i).equalsIgnoreCase("Bersih")) {
 
                     totAkhTran.set(i, totAkhir.elementAt(i) + (lama.elementAt(i) * 50000));
 
-                } else if (jenPera.elementAt(i).equalsIgnoreCase("Pencucian")) {
+                } else if (jenPera.elementAt(i).equalsIgnoreCase("Cuci")) {
 
                     totAkhTran.set(i, totAkhir.elementAt(i) + (lama.elementAt(i) * 100000));
 
@@ -1129,11 +1275,12 @@ public class UASPD {
         for (int i = 0; i < IDPel.size(); i++) {
             if (IDPel.elementAt(i).equalsIgnoreCase(S)) {
                 do {
-                    System.out.print("Pembayaran: ");
+                    System.out.print("Pembayaran: Rp");
                     bayar.set(i, Integer.parseInt(scan.readLine()));
                     if (bayar.elementAt(i) > totAkhTran.elementAt(i)) {
 
-                        kembalian.set(i, totAkhTran.elementAt(i) - bayar.elementAt(i));
+                        kembalian.set(i, bayar.elementAt(i) - totAkhTran.elementAt(i));
+                        System.out.println("Kembalian: Rp" + kembalian.elementAt(i));
 
                     } else {
                         System.out.println("Uang tidak cukup");

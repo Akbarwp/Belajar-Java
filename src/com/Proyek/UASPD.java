@@ -85,6 +85,7 @@ public class UASPD {
                     break;
 
                 case 7:
+                    nota();
                     break;
 
                 case 8:
@@ -679,7 +680,7 @@ public class UASPD {
                 System.out.println("=====Entry Data Perawatan=====");
                 System.out.println();
 
-                System.out.println("===Menu Perawatan===");
+                System.out.println("===Menu Jenis Perawatan===");
                 System.out.println("Bersih/Cuci/Tidak");
                 System.out.println();
 
@@ -1288,5 +1289,46 @@ public class UASPD {
                 } while (bayar.elementAt(i) < totAkhTran.elementAt(i));
             }
         }
+    }
+
+    private static void nota() throws IOException {
+
+        System.out.println("=====Nota=====");
+        System.out.println();
+
+        System.out.print("ID Pelanggan: ");
+        S = scan.readLine();
+        System.out.println();
+
+        for (int i = 0; i < IDPel.size(); i++) {
+            if (IDPel.elementAt(i).equalsIgnoreCase(S)) {
+
+                System.out.println("ID Pelanggan: " + IDPel.elementAt(i));
+                System.out.println("Nama Pelanggan: " + nmPel.elementAt(i));
+                System.out.println("Alamat Pelanggan: " + almt.elementAt(i));
+                System.out.println("Nomor Telepon: " + telp.elementAt(i));
+                System.out.println("ID Brankas: " + IDBran.elementAt(i));
+                System.out.println("Nama Brankas: " + nmBran.elementAt(i));
+                System.out.println("Lokasi Brankas: " + lokasi.elementAt(i));
+                System.out.println("ID Perhiasan: " + IDPerhi.elementAt(i));
+                System.out.println("Jenis Perhiasan: " + jenPerhi.elementAt(i));
+                System.out.println("Bahan Perhiasan: " + bahPerhi.elementAt(i));
+                System.out.println("Berat Perhiasan: " + berPerhi.elementAt(i));
+                System.out.println("ID Perawatan: " + IDPera.elementAt(i));
+                System.out.println("Jenis Perawatan: " + jenPera.elementAt(i));
+                System.out.println("ID Transaksi Penyimpanan: " + IDTranSim.elementAt(i));
+                System.out.println("Tanggal Penyimpanan: " + tglSimpan.elementAt(i));
+                System.out.println("Lama Penyimpanan: " + lama.elementAt(i));
+                System.out.println("ID Transaksi Perawatan: " + IDTranPer.elementAt(i));
+                System.out.println("Diskon: " + diskon.elementAt(i) + "%");
+                System.out.println("Diskon: Rp" + diskonRp.elementAt(i));
+                System.out.println("Total Pembayaran: Rp" + totAkhTran.elementAt(i));
+                System.out.println("Pembayaran: " + bayar.elementAt(i));
+                if (bayar.elementAt(i) > totAkhTran.elementAt(i)) {
+                    System.out.println("Kembalian: Rp" + kembalian.elementAt(i));
+                }
+            }
+        }
+        System.out.println();
     }
 }

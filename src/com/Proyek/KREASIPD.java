@@ -116,8 +116,6 @@ public class KREASIPD {
             System.out.println("3. Delete Data Transaksi Pembayaran");
             System.out.println("4. Show Data Transaksi Pembayaran");
 
-        } else if (pilih == 5) {
-            System.out.println("=====NOTA=====");
         }
         pilihan();
     }

@@ -53,7 +53,6 @@ public class KREASIPD {
                     break;
 
                 case 5:
-                    m1();
                     case5();
                     break;
 
@@ -117,6 +116,8 @@ public class KREASIPD {
             System.out.println("3. Delete Data Transaksi Pembayaran");
             System.out.println("4. Show Data Transaksi Pembayaran");
 
+        } else if (pilih == 5) {
+            System.out.println("=====NOTA=====");
         }
         pilihan();
     }
@@ -191,15 +192,21 @@ public class KREASIPD {
                 System.out.println("=====Delete Data Pelanggan=====");
                 System.out.println();
 
-                System.out.print("Masukkan ID Pelanggan: ");
-                String S = scan.readLine();
+                if (ID.isEmpty()) {
+                    System.out.println("Data Kosong");
 
-                for (int i = 0; i < ID.size(); i++) {
-                    if (S.equalsIgnoreCase(ID.elementAt(i))) {
+                } else {
 
-                        ID.removeElementAt(i);
-                        nmPel.removeElementAt(i);
-                        System.out.println("Data telah dihapus");
+                    System.out.print("Masukkan ID Pelanggan: ");
+                    String S = scan.readLine();
+
+                    for (int i = 0; i < ID.size(); i++) {
+                        if (S.equalsIgnoreCase(ID.elementAt(i))) {
+
+                            ID.removeElementAt(i);
+                            nmPel.removeElementAt(i);
+                            System.out.println("Data telah dihapus");
+                        }
                     }
                 }
                 System.out.println();
@@ -234,6 +241,8 @@ public class KREASIPD {
                     System.out.println("Pelanggan " + (i + 1));
                     System.out.print("Nama Barang: ");
                     nmBar.addElement(scan.readLine());
+                    System.out.print("Harga Barang: Rp");
+                    hrgBar.addElement(Integer.parseInt(scan.readLine()));
                     System.out.println();
                 }
                 break;
@@ -286,15 +295,21 @@ public class KREASIPD {
                 System.out.println("=====Delete Data Barang=====");
                 System.out.println();
 
-                System.out.print("Masukkan ID Pelanggan: ");
-                String S = scan.readLine();
+                if (ID.isEmpty()) {
+                    System.out.println("Data Kosong");
 
-                for (int i = 0; i < ID.size(); i++) {
-                    if (S.equalsIgnoreCase(ID.elementAt(i))) {
+                } else {
 
-                        nmBar.removeElementAt(i);
-                        hrgBar.removeElementAt(i);
-                        System.out.println("Data telah dihapus");
+                    System.out.print("Masukkan ID Pelanggan: ");
+                    String S = scan.readLine();
+
+                    for (int i = 0; i < ID.size(); i++) {
+                        if (S.equalsIgnoreCase(ID.elementAt(i))) {
+
+                            nmBar.removeElementAt(i);
+                            hrgBar.removeElementAt(i);
+                            System.out.println("Data telah dihapus");
+                        }
                     }
                 }
                 System.out.println();
@@ -326,7 +341,7 @@ public class KREASIPD {
                 System.out.println();
 
                 System.out.print("Masukkan ID Pelanggan: ");
-                String S = scan.readLine();
+                S = scan.readLine();
 
                 for (int i = 0; i < ID.size(); i++) {
                     if (S.equalsIgnoreCase(ID.elementAt(i))) {
@@ -334,6 +349,7 @@ public class KREASIPD {
                         System.out.println("ID Pelanggan: " + ID.elementAt(i));
                         System.out.println("Nama Pelanggan: " + nmPel.elementAt(i));
                         System.out.println("Nama Barang: " + nmBar.elementAt(i));
+                        System.out.println("Harga Barang: Rp" + hrgBar.elementAt(i));
                         System.out.println();
 
                         System.out.println("===Masukkan Data===");
@@ -341,6 +357,7 @@ public class KREASIPD {
                         jmlBar.addElement(Integer.parseInt(scan.readLine()));
                         awal();
                         biaya();
+                        System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
                         System.out.println("Diskon: " + diskon.elementAt(i) + "%");
                         System.out.println("Diskon: Rp" + diskonRp.elementAt(i));
                         System.out.println("Total Bayar: Rp" + totAkhir.elementAt(i));
@@ -367,6 +384,7 @@ public class KREASIPD {
                         int B = Integer.parseInt(scan.readLine());
                         jmlBar.set(i, B);
                         biaya();
+                        System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
                         System.out.println("Diskon: " + diskon.elementAt(i) + "%");
                         System.out.println("Diskon: Rp" + diskonRp.elementAt(i));
                         System.out.println("Total Bayar: Rp" + totAkhir.elementAt(i));
@@ -380,17 +398,23 @@ public class KREASIPD {
                 System.out.println("=====Delete Data Transaksi Penjualan=====");
                 System.out.println();
 
-                System.out.print("Masukkan ID Pelanggan: ");
-                S = scan.readLine();
+                if (ID.isEmpty()) {
+                    System.out.println("Data Kosong");
 
-                for (int i = 0; i < ID.size(); i++) {
-                    if (S.equalsIgnoreCase(ID.elementAt(i))) {
+                } else {
 
-                        totAwal.removeElementAt(i);
-                        diskon.removeElementAt(i);
-                        diskonRp.removeElementAt(i);
-                        totAkhir.removeElementAt(i);
-                        System.out.println("Data telah dihapus");
+                    System.out.print("Masukkan ID Pelanggan: ");
+                    S = scan.readLine();
+
+                    for (int i = 0; i < ID.size(); i++) {
+                        if (S.equalsIgnoreCase(ID.elementAt(i))) {
+
+                            totAwal.removeElementAt(i);
+                            diskon.removeElementAt(i);
+                            diskonRp.removeElementAt(i);
+                            totAkhir.removeElementAt(i);
+                            System.out.println("Data telah dihapus");
+                        }
                     }
                 }
                 System.out.println();
@@ -401,22 +425,29 @@ public class KREASIPD {
                 System.out.println("=====Show Data Transaksi Penjualan=====");
                 System.out.println();
 
-                for (int i = 0; i < ID.size(); i++) {
+                System.out.print("Masukkan ID Pelanggan: ");
+                S = scan.readLine();
 
-                    System.out.println("ID Pelanggan: " + ID.elementAt(i));
-                    System.out.println("Nama Pelanggan: " + nmPel.elementAt(i));
-                    System.out.println("Nama Barang: " + nmBar.elementAt(i));
-                    System.out.println("Jumlah Barang: " + jmlBar.elementAt(i));
-                    System.out.println("Diskon: " + diskon.elementAt(i) + "%");
-                    System.out.println("Diskon: Rp" + diskonRp.elementAt(i));
-                    System.out.println("Total Bayar: Rp" + totAkhir.elementAt(i));
-                    System.out.println();
+                for (int i = 0; i < ID.size(); i++) {
+                    if (S.equalsIgnoreCase(ID.elementAt(i))) {
+
+                        System.out.println("ID Pelanggan: " + ID.elementAt(i));
+                        System.out.println("Nama Pelanggan: " + nmPel.elementAt(i));
+                        System.out.println("Nama Barang: " + nmBar.elementAt(i));
+                        System.out.println("Harga Barang: " + hrgBar.elementAt(i));
+                        System.out.println("Jumlah Barang: " + jmlBar.elementAt(i));
+                        System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
+                        System.out.println("Diskon: " + diskon.elementAt(i) + "%");
+                        System.out.println("Diskon: Rp" + diskonRp.elementAt(i));
+                        System.out.println("Total Bayar: Rp" + totAkhir.elementAt(i));
+                        System.out.println();
+                    }
                 }
                 break;
         }
     }
 
-    private static int awal() {
+    private static int awal() throws IOException {
 
         for (int i = 0; i < ID.size(); i++) {
             if (S.equalsIgnoreCase(ID.elementAt(i))) {
@@ -430,7 +461,7 @@ public class KREASIPD {
         return 0;
     }
 
-    private static int biaya() {
+    private static int biaya() throws IOException {
 
         for (int i = 0; i < ID.size(); i++) {
             if (S.equalsIgnoreCase(ID.elementAt(i))) {
@@ -458,6 +489,7 @@ public class KREASIPD {
             }
         }
         return 0;
+
     }
 
     private static void case4() throws IOException {
@@ -470,7 +502,7 @@ public class KREASIPD {
                 System.out.println();
 
                 System.out.print("Masukkan ID Pelanggan: ");
-                String S = scan.readLine();
+                S = scan.readLine();
 
                 for (int i = 0; i < ID.size(); i++) {
                     if (S.equalsIgnoreCase(ID.elementAt(i))) {
@@ -478,7 +510,9 @@ public class KREASIPD {
                         System.out.println("ID Pelanggan: " + ID.elementAt(i));
                         System.out.println("Nama Pelanggan: " + nmPel.elementAt(i));
                         System.out.println("Nama Barang: " + nmBar.elementAt(i));
-                        System.out.print("Jumlah Barang: " + jmlBar.elementAt(i));
+                        System.out.println("Harga Barang: Rp" + hrgBar.elementAt(i));
+                        System.out.println("Jumlah Barang: " + jmlBar.elementAt(i));
+                        System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
                         System.out.println("Diskon: " + diskon.elementAt(i) + "%");
                         System.out.println("Diskon: Rp" + diskonRp.elementAt(i));
                         System.out.println("Total Bayar: Rp" + totAkhir.elementAt(i));
@@ -516,15 +550,21 @@ public class KREASIPD {
                 System.out.println("=====Delete Data Transaksi Pembayaran=====");
                 System.out.println();
 
-                System.out.print("Masukkan ID Pelanggan: ");
-                S = scan.readLine();
+                if (ID.isEmpty()) {
+                    System.out.println("Data Kosong");
 
-                for (int i = 0; i < ID.size(); i++) {
-                    if (S.equalsIgnoreCase(ID.elementAt(i))) {
+                } else {
 
-                        bayar.removeElementAt(i);
-                        kembalian.removeElementAt(i);
-                        System.out.println("Data telah dihapus");
+                    System.out.print("Masukkan ID Pelanggan: ");
+                    S = scan.readLine();
+
+                    for (int i = 0; i < ID.size(); i++) {
+                        if (S.equalsIgnoreCase(ID.elementAt(i))) {
+
+                            bayar.removeElementAt(i);
+                            kembalian.removeElementAt(i);
+                            System.out.println("Data telah dihapus");
+                        }
                     }
                 }
                 System.out.println();
@@ -535,20 +575,27 @@ public class KREASIPD {
                 System.out.println("=====Show Data Transaksi Pembayaran=====");
                 System.out.println();
 
-                for (int i = 0; i < ID.size(); i++) {
+                System.out.print("Masukkan ID Pelanggan: ");
+                S = scan.readLine();
 
-                    System.out.println("ID Pelanggan: " + ID.elementAt(i));
-                    System.out.println("Nama Pelanggan: " + nmPel.elementAt(i));
-                    System.out.println("Nama Barang: " + nmBar.elementAt(i));
-                    System.out.println("Jumlah Barang: " + jmlBar.elementAt(i));
-                    System.out.println("Diskon: " + diskon.elementAt(i) + "%");
-                    System.out.println("Diskon: Rp" + diskonRp.elementAt(i));
-                    System.out.println("Total Bayar: Rp" + totAkhir.elementAt(i));
-                    System.out.println("Pembayaran: Rp" + bayar.elementAt(i));
-                    if (bayar.elementAt(i) > totAkhir.elementAt(i)) {
-                        System.out.println("Kembalian: Rp" + kembalian.elementAt(i));
+                for (int i = 0; i < ID.size(); i++) {
+                    if (S.equalsIgnoreCase(ID.elementAt(i))) {
+
+                        System.out.println("ID Pelanggan: " + ID.elementAt(i));
+                        System.out.println("Nama Pelanggan: " + nmPel.elementAt(i));
+                        System.out.println("Nama Barang: " + nmBar.elementAt(i));
+                        System.out.println("Harga Barang: Rp" + hrgBar.elementAt(i));
+                        System.out.println("Jumlah Barang: " + jmlBar.elementAt(i));
+                        System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
+                        System.out.println("Diskon: " + diskon.elementAt(i) + "%");
+                        System.out.println("Diskon: Rp" + diskonRp.elementAt(i));
+                        System.out.println("Total Bayar: Rp" + totAkhir.elementAt(i));
+                        System.out.println("Pembayaran: Rp" + bayar.elementAt(i));
+                        if (bayar.elementAt(i) > totAkhir.elementAt(i)) {
+                            System.out.println("Kembalian: Rp" + kembalian.elementAt(i));
+                        }
+                        System.out.println();
                     }
-                    System.out.println();
                 }
                 break;
         }
@@ -588,9 +635,7 @@ public class KREASIPD {
 
     private static void case5() throws IOException {
 
-        System.out.println("=====NOTA=====");
         System.out.println();
-
         System.out.print("Masukkan ID Pelanggan: ");
         S = scan.readLine();
 
@@ -600,7 +645,9 @@ public class KREASIPD {
                 System.out.println("ID Pelanggan: " + ID.elementAt(i));
                 System.out.println("Nama Pelanggan: " + nmPel.elementAt(i));
                 System.out.println("Nama Barang: " + nmBar.elementAt(i));
+                System.out.println("Harga Barang: Rp" + hrgBar.elementAt(i));
                 System.out.println("Jumlah Barang: " + jmlBar.elementAt(i));
+                System.out.println("Total Awal: Rp" + totAwal.elementAt(i));
                 System.out.println("Diskon: " + diskon.elementAt(i) + "%");
                 System.out.println("Diskon: Rp" + diskonRp.elementAt(i));
                 System.out.println("Total Bayar: Rp" + totAkhir.elementAt(i));

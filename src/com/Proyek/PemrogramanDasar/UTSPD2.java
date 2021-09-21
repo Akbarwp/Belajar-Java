@@ -1,8 +1,8 @@
-package com.Proyek.StrukturData;
+package com.Proyek.PemrogramanDasar;
 
 import java.io.*;
 
-public class UTSPD {
+public class UTSPD2 {
 
     public static void main(String[] args) throws IOException {
 
@@ -29,6 +29,7 @@ public class UTSPD {
         // per[i][10] = Cicilan
         // per[i][11] = Bayar
         // per[i][12] = Kembalian
+        // per[i][13] =
 
         // ambil[i][0] = Nama
         // ambil[i][1] = Tanggal Awal Penyimpanan

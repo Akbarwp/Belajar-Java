@@ -1,9 +1,9 @@
-package com.Proyek;
+package com.Proyek.PemrogramanDasar;
 
 import java.util.*;
 import java.io.*;
 
-public class UASPD_test {
+public class UASPD {
 
     public static BufferedReader scan = new BufferedReader(new InputStreamReader(System.in));
 
@@ -36,9 +36,6 @@ public class UASPD_test {
     public static Vector<Integer> totAkhTran = new Vector<Integer>();
     public static Vector<Integer> bayar = new Vector<Integer>();
     public static Vector<Integer> kembalian = new Vector<Integer>();
-
-    public static Vector<Integer> bayarPersen = new Vector<Integer>();
-    public static Vector<Integer> bayarRP = new Vector<Integer>();
 
     public static int pilih;
     public static String S;
@@ -1254,38 +1251,25 @@ public class UASPD_test {
 
                 for (int i = 0; i < IDTranPer.size(); i++) {
 
-                    System.out.println("ID Pelanggan: " + IDPel.elementAt(i));
-                    System.out.println("Nama Pelanggan: " + nmPel.elementAt(i));
-                    System.out.println("Alamat Pelanggan: " + almt.elementAt(i));
+                    System.out.println("Daftar Penyimpanan Pelanggan: " + S);
+                    System.out.println("ID Transaksi Perawatan: " + IDTranPer.elementAt(i));
+                    System.out.println("Nama: " + nmPel.elementAt(i));
+                    System.out.println("Alamat: " + almt.elementAt(i));
                     System.out.println("Nomor Telepon: " + telp.elementAt(i));
-                    System.out.println("ID Brankas: " + IDBran.elementAt(i));
-                    System.out.println("Nama Brankas: " + nmBran.elementAt(i));
-                    System.out.println("Lokasi Brankas: " + lokasi.elementAt(i));
                     System.out.println("ID Perhiasan: " + IDPerhi.elementAt(i));
                     System.out.println("Jenis Perhiasan: " + jenPerhi.elementAt(i));
                     System.out.println("Bahan Perhiasan: " + bahPerhi.elementAt(i));
-                    System.out.println("Berat Perhiasan: " + berPerhi.elementAt(i));
+                    System.out.println("Berat Pehiasan: " + berPerhi.elementAt(i));
+                    System.out.println("Lama Simpan: " + lama.elementAt(i));
+                    System.out.println("Tanggal Penyimpanan: " + tglSimpan.elementAt(i));
                     System.out.println("ID Perawatan: " + IDPera.elementAt(i));
                     System.out.println("Jenis Perawatan: " + jenPera.elementAt(i));
-                    System.out.println("ID Transaksi Penyimpanan: " + IDTranSim.elementAt(i));
-                    System.out.println("Tanggal Penyimpanan: " + tglSimpan.elementAt(i));
-                    System.out.println("Lama Penyimpanan: " + lama.elementAt(i));
-                    System.out.println("ID Transaksi Perawatan: " + IDTranPer.elementAt(i));
-                    System.out.println("Diskon: " + diskon.elementAt(i) + "%");
-                    System.out.println("Diskon: Rp" + diskonRp.elementAt(i));
-                    System.out.println("Total Pembayaran: Rp" + totAkhTran.elementAt(i));
-                    if (bayar.elementAt(i) != 0) {
-                        System.out.println("Pembayaran: " + bayar.elementAt(i));
-
-                    } else {
-                        System.out.println("Pembayaran: " + totAkhTran.elementAt(i));
-                    }
+                    System.out.println("Total Akhir: Rp" + totAkhir.elementAt(i));
+                    System.out.println("Total Setelah Biaya Perawatan: Rp" + totAkhTran.elementAt(i));
+                    System.out.println("Pembayaran: Rp" + bayar.elementAt(i));
                     if (bayar.elementAt(i) > totAkhTran.elementAt(i)) {
                         System.out.println("Kembalian: Rp" + kembalian.elementAt(i));
                     }
-                    System.out.println("Cashback: " + bayarPersen.elementAt(i) + "%");
-                    System.out.println("Cashback: Rp" + bayarRP.elementAt(i));
-                    System.out.println("Total Setelah Cashback: Rp" + totAkhTran.elementAt(i));
                 }
                 System.out.println();
                 break;
@@ -1331,89 +1315,18 @@ public class UASPD_test {
 
         for (int i = 0; i < IDPel.size(); i++) {
             if (IDPel.elementAt(i).equalsIgnoreCase(S)) {
+                do {
+                    System.out.print("Pembayaran: Rp");
+                    bayar.set(i, Integer.parseInt(scan.readLine()));
+                    if (bayar.elementAt(i) > totAkhTran.elementAt(i)) {
 
-                System.out.println("Jenis Pembayaran");
-                System.out.println("Tunai/OVO/ShopeePay");
-                System.out.print("Jenis Pembayaran: ");
-                String b = scan.readLine();
+                        kembalian.set(i, bayar.elementAt(i) - totAkhTran.elementAt(i));
+                        System.out.println("Kembalian: Rp" + kembalian.elementAt(i));
 
-                if (b.equalsIgnoreCase("Tunai")) {
-                    do {
-                        System.out.print("Pembayaran: Rp");
-                        bayar.set(i, Integer.parseInt(scan.readLine()));
-                        if (bayar.elementAt(i) > totAkhTran.elementAt(i)) {
-
-                            kembalian.set(i, bayar.elementAt(i) - totAkhTran.elementAt(i));
-                            System.out.println("Kembalian: Rp" + kembalian.elementAt(i));
-
-                        } else {
-                            System.out.println("Uang tidak cukup");
-                        }
-                    } while (bayar.elementAt(i) < totAkhTran.elementAt(i));
-
-                    System.out.println();
-                    System.out.println("Pembayaran: Rp" + bayar.elementAt(i));
-                    System.out.println("===Konfirmasi Pembayaran===");
-                    System.out.println("Kirim/Ganti?");
-                    b = scan.readLine();
-                    System.out.println();
-
-                    if (b.equalsIgnoreCase("Ganti")) {
-                        kembalian.set(i, 0);
-                        bayar.set(i, 0);
-                        pembayaran();
+                    } else {
+                        System.out.println("Uang tidak cukup");
                     }
-
-                } else if (b.equalsIgnoreCase("OVO")) {
-
-                    bayarPersen.addElement(20);
-                    bayarRP.addElement(totAkhTran.elementAt(i) * 20 / 100);
-
-                    System.out.println("Cashback: " + bayarPersen.elementAt(i) + "%");
-                    System.out.println("Cashback: Rp" + bayarRP.elementAt(i));
-
-                    totAkhTran.set(i, (totAkhTran.elementAt(i) - bayarRP.elementAt(i)));
-
-                    System.out.println("Total Setelah Cashback: Rp" + totAkhTran.elementAt(i));
-
-                    System.out.println("Pembayaran: Rp" + totAkhTran.elementAt(i));
-                    System.out.println("===Konfirmasi Pembayaran===");
-                    System.out.println("Kirim/Ganti?");
-                    b = scan.readLine();
-                    System.out.println();
-
-                    if (b.equalsIgnoreCase("Ganti")) {
-                        totAkhTran.set(i, (totAkhTran.elementAt(i) + bayarRP.elementAt(i)));
-                        bayarPersen.removeElementAt(i);
-                        bayarRP.removeElementAt(i);
-                        pembayaran();
-                    }
-
-                } else if (b.equalsIgnoreCase("ShopeePay")) {
-
-                    bayarPersen.addElement(10);
-                    bayarRP.addElement(totAkhTran.elementAt(i) * 10 / 100);
-
-                    System.out.println("Cashback: " + bayarPersen.elementAt(i) + "%");
-                    System.out.println("Cashback: Rp" + bayarRP.elementAt(i));
-
-                    totAkhTran.set(i, (totAkhTran.elementAt(i) - bayarRP.elementAt(i)));
-
-                    System.out.println("Total Setelah Cashback: Rp" + totAkhTran.elementAt(i));
-
-                    System.out.println("Pembayaran: Rp" + totAkhTran.elementAt(i));
-                    System.out.println("===Konfirmasi Pembayaran===");
-                    System.out.println("Kirim/Ganti?");
-                    b = scan.readLine();
-                    System.out.println();
-
-                    if (b.equalsIgnoreCase("Ganti")) {
-                        totAkhTran.set(i, (totAkhTran.elementAt(i) + bayarRP.elementAt(i)));
-                        bayarPersen.removeElementAt(i);
-                        bayarRP.removeElementAt(i);
-                        pembayaran();
-                    }
-                }
+                } while (bayar.elementAt(i) < totAkhTran.elementAt(i));
             }
         }
     }
@@ -1449,18 +1362,10 @@ public class UASPD_test {
                 System.out.println("Diskon: " + diskon.elementAt(i) + "%");
                 System.out.println("Diskon: Rp" + diskonRp.elementAt(i));
                 System.out.println("Total Pembayaran: Rp" + totAkhTran.elementAt(i));
-                if (bayar.elementAt(i) != 0) {
-                    System.out.println("Pembayaran: " + bayar.elementAt(i));
-
-                } else {
-                    System.out.println("Pembayaran: " + totAkhTran.elementAt(i));
-                }
+                System.out.println("Pembayaran: " + bayar.elementAt(i));
                 if (bayar.elementAt(i) > totAkhTran.elementAt(i)) {
                     System.out.println("Kembalian: Rp" + kembalian.elementAt(i));
                 }
-                System.out.println("Cashback: " + bayarPersen.elementAt(i) + "%");
-                System.out.println("Cashback: Rp" + bayarRP.elementAt(i));
-                System.out.println("Total Setelah Cashback: Rp" + totAkhTran.elementAt(i));
             }
         }
         System.out.println();

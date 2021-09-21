@@ -1,4 +1,4 @@
-package com.Proyek.UASSD;
+package com.Proyek.StrukturData;
 
 // import untuk dapat menggunakan Scanner
 import java.util.*;

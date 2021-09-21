@@ -1,4 +1,4 @@
-package com.Proyek;
+package com.Proyek.StrukturData;
 
 import java.io.*;
 

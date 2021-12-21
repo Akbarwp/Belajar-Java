@@ -2,7 +2,7 @@ package com.Proyek.PBO;
 
 import java.io.*;
 
-abstract class Mahasiswa {
+abstract class Mahasiswa1 {
 
     private String NIM, nama, alamat, jurusan;
     private int nilaiTA;
@@ -10,18 +10,18 @@ abstract class Mahasiswa {
     private static String namaUniv;
 
     static String getNamaUniv() {
-        return Mahasiswa.namaUniv;
+        return Mahasiswa1.namaUniv;
     }
 
     static void setNamaUniv(String namaUniv) {
-        Mahasiswa.namaUniv = namaUniv;
+        Mahasiswa1.namaUniv = namaUniv;
     }
 
-    Mahasiswa() {
+    Mahasiswa1() {
 
     }
 
-    Mahasiswa(String NIM, String nama, String alamat, String jurusan, int nilaiTA) {
+    Mahasiswa1(String NIM, String nama, String alamat, String jurusan, int nilaiTA) {
         this.NIM = NIM;
         this.nama = nama;
         this.alamat = alamat;
@@ -73,7 +73,7 @@ abstract class Mahasiswa {
 
 }
 
-class mhsSI extends Mahasiswa {
+class mhsSI extends Mahasiswa1 {
 
     public mhsSI(String NIM, String nama, String alamat, String jurusan, int nilaiTA) {
         super(NIM, nama, alamat, jurusan, nilaiTA);
@@ -97,7 +97,7 @@ class mhsSI extends Mahasiswa {
     }
 }
 
-class mhsTK extends Mahasiswa {
+class mhsTK extends Mahasiswa1 {
 
     public mhsTK(String NIM, String nama, String alamat, String jurusan, int nilaiTA) {
         super(NIM, nama, alamat, jurusan, nilaiTA);
@@ -121,7 +121,7 @@ class mhsTK extends Mahasiswa {
     }
 }
 
-class mhsDKV extends Mahasiswa {
+class mhsDKV extends Mahasiswa1 {
 
     public mhsDKV(String NIM, String nama, String alamat, String jurusan, int nilaiTA) {
         super(NIM, nama, alamat, jurusan, nilaiTA);
@@ -151,15 +151,15 @@ public class UTSPBO2 {
 
     public static void main(String[] args) throws IOException {
 
-        Mahasiswa mhs;
+        Mahasiswa1 mhs;
         String pilih;
 
         do {
             System.out.print("Masukkan nama Universitas: ");
             String namaUniv = br.readLine();
-            Mahasiswa.setNamaUniv(namaUniv);
+            Mahasiswa1.setNamaUniv(namaUniv);
 
-            System.out.println("=====Data Mahasiswa=====");
+            System.out.println("=====Data Mahasiswa1=====");
             System.out.print("Masukkan NIM: ");
             String NIM = br.readLine();
             System.out.print("Masukkan Nama: ");
@@ -189,7 +189,7 @@ public class UTSPBO2 {
 
                 mhs = new mhsSI(mhs.getNIM(), mhs.getNama(), mhs.getAlamat(), mhs.getJurusan(), mhs.getTA());
 
-                System.out.println("\n=====" + Mahasiswa.getNamaUniv() + "=====");
+                System.out.println("\n=====" + Mahasiswa1.getNamaUniv() + "=====");
                 System.out.println("NIM: " + mhs.getNIM());
                 System.out.println("Nama: " + mhs.getNama());
                 System.out.println("Alamat: " + mhs.getAlamat());
@@ -209,7 +209,7 @@ public class UTSPBO2 {
 
                 mhs = new mhsTK(mhs.getNIM(), mhs.getNama(), mhs.getAlamat(), mhs.getJurusan(), mhs.getTA());
 
-                System.out.println("\n=====" + Mahasiswa.getNamaUniv() + "=====");
+                System.out.println("\n=====" + Mahasiswa1.getNamaUniv() + "=====");
                 System.out.println("NIM: " + mhs.getNIM());
                 System.out.println("Nama: " + mhs.getNama());
                 System.out.println("Alamat: " + mhs.getAlamat());
@@ -229,7 +229,7 @@ public class UTSPBO2 {
 
                 mhs = new mhsDKV(mhs.getNIM(), mhs.getNama(), mhs.getAlamat(), mhs.getJurusan(), mhs.getTA());
 
-                System.out.println("\n=====" + Mahasiswa.getNamaUniv() + "=====");
+                System.out.println("\n=====" + Mahasiswa1.getNamaUniv() + "=====");
                 System.out.println("NIM: " + mhs.getNIM());
                 System.out.println("Nama: " + mhs.getNama());
                 System.out.println("Alamat: " + mhs.getAlamat());
